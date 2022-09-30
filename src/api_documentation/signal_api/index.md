@@ -19,8 +19,8 @@ debugging.
 
 <table>
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 83%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -67,7 +67,7 @@ Used to find the call associated with the signal.
 
 > **Required**
 >
-> <span class="title-ref">transaction\_id</span> The ID of the
+> <span class="title-ref">transaction_id</span> The ID of the
 > transaction (Call leg) being reported on.
 >
 > or

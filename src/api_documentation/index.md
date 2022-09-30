@@ -14,14 +14,11 @@ partner platforms.
 information (or other conversion events) from a server back into the
 platform.
 
-[Bulk Ringpool](./bulk_ringpool_api.md) -allocates a dynamic, trackable promo phone number
+[Bulk Ringpool API](./bulk_ringpool_api.md) -allocates a dynamic, trackable promo phone number
 from a RingPool (designed to handle a high volume of requests per
 second).
 
-`ringpool` -allocates a dynamic, trackable promo phone number from a
-RingPool (no longer recommended).
-
-`signal_api/index` -used to report signals that occur on a specific call
+[Signal API](./signal_api/index.md) -used to report signals that occur on a specific call
 (transaction).
 
 `call_api/index` -used to pull transcript information for a specific

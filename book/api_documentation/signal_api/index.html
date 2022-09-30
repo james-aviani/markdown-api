@@ -1,0 +1,777 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Signal API - Invoca Markdown API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../../basics/index.html"><strong aria-hidden="true">2.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../basics/design_principles.html"><strong aria-hidden="true">2.1.</strong> Design Principles</a></li><li class="chapter-item expanded "><a href="../../basics/error_handling.html"><strong aria-hidden="true">2.2.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="../../basics/ppc_platform_authentication_access_tokens.html"><strong aria-hidden="true">2.3.</strong> PPC Platform Authentication</a></li><li class="chapter-item expanded "><a href="../../basics/saml_single_sign_on.html"><strong aria-hidden="true">2.4.</strong> Single Sign On</a></li></ol></li><li class="chapter-item expanded "><a href="../../api_documentation/index.html"><strong aria-hidden="true">3.</strong> API Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../api_documentation/transactions_api/index.html"><strong aria-hidden="true">3.1.</strong> Transactions API</a></li><li class="chapter-item expanded "><a href="../../api_documentation/network_integration/index.html"><strong aria-hidden="true">3.2.</strong> Network Integrations API</a></li><li class="chapter-item expanded "><a href="../../api_documentation/bulk_ringpool_api.html"><strong aria-hidden="true">3.3.</strong> Bulk Ringpool API</a></li><li class="chapter-item expanded "><a href="../../api_documentation/signal_api/index.html" class="active"><strong aria-hidden="true">3.4.</strong> Signal API</a></li><li class="chapter-item expanded "><a href="../../api_documentation/manage_api_credentials.html"><strong aria-hidden="true">3.5.</strong> Manage API Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="../../web_integration.html"><strong aria-hidden="true">4.</strong> Web Integration</a></li><li class="chapter-item expanded "><a href="../../api_documentation/index.html"><strong aria-hidden="true">5.</strong> Depricated APIs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../api_documentation/conversion_reporting.html"><strong aria-hidden="true">5.1.</strong> Conversion Reporting API</a></li><li class="chapter-item expanded "><a href="../../api_documentation/ringpool_api.html"><strong aria-hidden="true">5.2.</strong> Ringpool API</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Invoca Markdown API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="signal-api"><a class="header" href="#signal-api">Signal API</a></h1>
+<p>The Signal API is used to apply Signals and/or Custom Data Fields to
+specific calls (transactions) after the call has occurred.</p>
+<p>This can be very helpful if you need to apply specific data from other
+systems if that data isn't available during the call.</p>
+<p>Signals can be any boolean value (e.g. sale, quote, etc), and Custom
+Data can be any alpha-numeric value (e.g. account type, customer quality
+score, etc).</p>
+<h2 id="response-codes"><a class="header" href="#response-codes">Response Codes</a></h2>
+<p>Remember to check the HTTP status code returned. This helps greatly when
+debugging.</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Status Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>200 OK</td>
+<td>Request was accepted with all Signals and Custom data applied properly</td>
+</tr>
+<tr class="even">
+<td>201 Created</td>
+<td>Request was accepted with the <strong>call_in_progress</strong> parameter set to true</td>
+</tr>
+<tr class="odd">
+<td>400 Bad Request</td>
+<td>Attempted to make a request with an invalid API Version for route. Check the error message for any corrections to make</td>
+</tr>
+<tr class="even">
+<td>401 Not Authorized</td>
+<td>Invalid or missing oauth token</td>
+</tr>
+<tr class="odd">
+<td>403 Forbidden</td>
+<td>Attempted to access an invalid resource or provided invalid data. Check the errors object in the response.</td>
+</tr>
+<tr class="even">
+<td>404 Not Found</td>
+<td>Provided a transaction ID that was not found, or if using call start time and other search filters, no matching call found</td>
+</tr>
+</tbody>
+</table>
+<h2 id="request-parameters"><a class="header" href="#request-parameters">Request Parameters</a></h2>
+<p>Passed in “application/json” format.</p>
+<p><strong>Search Parameters</strong></p>
+<p>Used to find the call associated with the signal.</p>
+<blockquote>
+<p><strong>Required</strong></p>
+<p><span class="title-ref">transaction_id</span> The ID of the
+transaction (Call leg) being reported on.</p>
+<p>or</p>
+<p><span class="title-ref">call_record_id</span> The ID of the complete
+call being reported on.</p>
+<p>or</p>
+<p><span class="title-ref">call_start_time</span> The start time does
+not have to be exact since clocks will not be perfectly synchronized.
+We will find the closest match (in combination with
+<strong>duration_in_seconds</strong>, if provided). See <strong>Timestamp Formats</strong>
+section below for descriptions of supported timestamps.</p>
+<p>Note: If using <strong>call_start_time</strong> to match, instead of
+<strong>transaction_id</strong>, one or more of the following optional parameters
+is highly recommended. The optional parameters are ignored when using
+the <strong>transaction_id</strong>:</p>
+<p><strong>Optional</strong></p>
+<p><span class="title-ref">calling_phone_number</span> ANI in E.164
+format +country national_number; example: ‘+18885551212’.</p>
+<p><span class="title-ref">duration_in_seconds</span> Length of the
+call. Used for finding the call that drove the sale. Like start time,
+duration_in_seconds does not have to be exact, we use it to find the
+closest match.</p>
+<p><span class="title-ref">advertiser_id_from_network</span> ID from
+network field on advertiser; only calls within this advertiser will be
+considered (only allowed when reporting as network user, and
+advertiser must be in same network).</p>
+<p><span class="title-ref">advertiser_campaign_id_from_network</span>
+ID from network field on advertiser campaign; only calls within this
+advertiser campaign will be considered (campaign must be in the
+organization accessed via API).</p>
+<p><span class="title-ref">network_id</span> ID of the network.</p>
+</blockquote>
+<hr />
+<p><strong>Signal Parameters</strong></p>
+<p>Used to create the fields of a signal.</p>
+<blockquote>
+<p><strong>Required</strong></p>
+<p><span class="title-ref">name</span> The name describing the signal
+event. For reporting a sale happened on a call, “Sale” is recommended.
+Other examples include “Free Trial”, “2yr Subscription”,
+“Cancellation.” This can be used elsewhere in the system and should be
+a small list of values meaningful to your organization. Names are
+matched case-insensitively, but we will preserve and use the casing of
+the first time the signal name is reported.</p>
+<p><strong>Optional</strong></p>
+<p><span class="title-ref">partner_unique_id</span> Unique identifier,
+to distinguish between updating an existing signal (for example
+correcting a sale that was reported) versus adding a second sale to
+the call (for example a reservation made while on the call and then an
+add on item purchased later). Note: this ID only needs to be unique
+within the given transaction and <strong>name</strong>, so it can be as simple as
+“1”, “2”… or it can be a globally unique ID if desired. Defaults to
+empty string if not passed.</p>
+<p><span class="title-ref">occurred_at_time</span> This allows batching
+of signal results at a later time and still capture the exact time the
+signal event happened. See <strong>Timestamp Formats</strong> section below for
+descriptions of supported timestamps. Defaults to the time of the API
+request if not provided.</p>
+<p><span class="title-ref">revenue</span> Money with up to 2 decimal
+places (period separated). Assumed to be in the same currency as the
+organization that owns the signal being reported. Defaults to null if
+not passed. (Recommended to omit parameter if no sale occurred,
+instead of passing 0). Do not include formatting such as currency
+symbol or separators (i.e. commas).</p>
+<p><span class="title-ref">value</span> True or false as to whether the
+signal was met or not. Defaults to true if not passed. Can be a string
+‘true’ or ‘false’, or 1 (true) or 0 (false), Yes (true), or No
+(false). These values are not case sensitive.</p>
+</blockquote>
+<hr />
+<p><strong>Custom Data Parameters</strong></p>
+<p>Apply Custom Data values to a call based on your Custom Data
+configuration.</p>
+<p>The Custom Data Fields provided in a request <strong>must</strong> already exist in
+your <a href="https://www2.invoca.net/customer_data_dictionary/home">Custom Data
+Configuration</a></p>
+<blockquote>
+<p><strong>Required</strong></p>
+<p><span class="title-ref">name</span> The Partner (API) Name of the
+Custom Data Field you want to apply a value to. Visit your <a href="https://www2.invoca.net/customer_data_dictionary/home">Custom
+Data Management
+Page</a> to view
+your available Custom Data Fields.</p>
+<p><span class="title-ref">value</span> The value you would like to apply
+to the associated Custom Data Field for this call.</p>
+</blockquote>
+<hr />
+<p><strong>Additional Parameters</strong></p>
+<blockquote>
+<p><strong>Required</strong></p>
+<p><span class="title-ref">oauth_token</span> API token for
+authentication. Can be specified in the body or header of the request.</p>
+<p><strong>Optional</strong></p>
+<p><span class="title-ref">call_in_progress</span> True or false as to
+whether the call may still be in progress. Invoca will immediately
+return a 201 and empty response body when this is set to true. When
+the call finishes, Invoca will apply the signal. Defaults to false.</p>
+<p>Note: <strong>call_in_progress</strong> can be passed, even when the call has
+already finished. However, Invoca will only check for required fields
+and all other errors will not be returned. It is highly recommended to
+use <strong>transaction_id</strong> in the search parameters. If
+<strong>call_start_time</strong> is used, please provide the
+<strong>calling_phone_number</strong>, as well as any other information you can
+provide, to help avoid matching with an earlier call.</p>
+</blockquote>
+<p>Endpoint:</p>
+<p><code>https://invoca.net/api/@@SIGNAL_API_VERSION/transactions.json</code></p>
+<h2 id="timestamp-formats"><a class="header" href="#timestamp-formats">Timestamp Formats</a></h2>
+<p>The following formats are supported for both <span
+class="title-ref">call_start_time</span> and <span
+class="title-ref">occurred_at_time</span>.</p>
+<p>All examples below correspond to a date time of <strong>11 April 2016</strong> at <strong>1
+PM Pacific Time</strong>.</p>
+<p><strong>Epoch:</strong> 10 digit timestamp in UTC seconds since 1/1/70, also known as
+Unix time_t. UTC milliseconds since 1/1/70 (which is the default in
+Javascript) are also supported, i.e. a 13 digit start time.</p>
+<blockquote>
+<p>Example (10 digits): <strong>1460404800</strong></p>
+<p>Example (13 digits): <strong>1460404800000</strong></p>
+</blockquote>
+<p><strong>Compressed:</strong> 17 digit timestamp always parsed in UTC.</p>
+<blockquote>
+<p>Format: <strong>YYYYMMDDHHMMSSsss</strong></p>
+<p>Example: <strong>20160411130000000</strong></p>
+</blockquote>
+<p><strong>ISO 8601:</strong> Timestamp with +/- UTC offset or Z to indicate time is in
+UTC. Milliseconds are optional.</p>
+<blockquote>
+<p>Format: <strong>YYYY/MM/DDTHH:MM:SS.sss+hh:mm</strong></p>
+<p>Example (UTC offset of +3 hours): <strong>2016/04/11T23:00:00.000+03:00</strong></p>
+<p>Example (UTC offset of -7 hours): <strong>2016/04/11T13:00:00.000-07:00</strong></p>
+<p>Example (UTC): <strong>2016/04/11T20:00:00.000Z</strong></p>
+<p>Example (no milliseconds): <strong>2016/04/11T13:00:00-07:00</strong></p>
+</blockquote>
+<p><strong>Excel Compatible:</strong> Timestamp parsed in the timezone of the <strong>oauth
+token</strong>'s associated network. Milliseconds are optional.</p>
+<blockquote>
+<p>Format: <strong>YYYY/MM/DD HH:MM:SS.sss AM/PM</strong></p>
+<p>Example: <strong>2016/04/11 13:00:00.000 PM</strong></p>
+<p>Example (no milliseconds): <strong>2016/04/11 13:00:00 PM</strong></p>
+<p><strong>Note:</strong> The file upload user interface includes a timezone dropdown
+feature, which allows users to select which timezone this format is
+parsed in. Use the following to format Excel date cells: <strong>yyyy/mm/dd
+hh:mm:ss.000 AM/PM</strong>.</p>
+</blockquote>
+<h2 id="example-post-request-using-curl"><a class="header" href="#example-post-request-using-curl">Example POST Request Using cURL</a></h2>
+<p>You can send call results to Invoca servers in the form of an HTTP POST
+or PUT. cURL is recommended because it is simple and preinstalled on
+most machines. Below is an example of a cURL request:</p>
+<pre><code>curl -k -H &quot;Content-Type: application/json&quot; -X POST -d '{&quot;search&quot;: {&quot;transaction_id&quot;: &quot;00000000-00000001&quot;},&quot;signals&quot;: [{&quot;name&quot;: &quot;sale&quot;,&quot;partner_unique_id&quot;: &quot;1&quot;,&quot;occurred_at_time&quot;: &quot;1440607313&quot;,&quot;revenue&quot;: &quot;100.00&quot;,&quot;value&quot;: &quot;true&quot;}], &quot;custom_data&quot;: [{&quot;name&quot;: &quot;channel&quot;, &quot;value&quot;: &quot;Paid Search&quot;}],&quot;oauth_token&quot;: &lt;YOUR OAUTH TOKEN&gt;}'  https://invoca.net/api/@@SIGNAL_API_VERSION/transactions.json
+</code></pre>
+<p>Below is the same example as above with the OAuth Token passed in via
+the request headers:</p>
+<pre><code>curl -k -H &quot;Content-Type: application/json&quot; -H &quot;Authorization: &lt;YOUR OAUTH TOKEN&gt;&quot; -X POST -d '{&quot;search&quot;: {&quot;transaction_id&quot;: &quot;00000000-00000001&quot;},&quot;signals&quot;: [{&quot;name&quot;: &quot;sale&quot;,&quot;partner_unique_id&quot;: &quot;1&quot;,&quot;occurred_at_time&quot;: &quot;1440607313&quot;,&quot;revenue&quot;: &quot;100.00&quot;,&quot;value&quot;: &quot;true&quot;}], &quot;custom_data&quot;: [{&quot;name&quot;: &quot;channel&quot;, &quot;value&quot;: &quot;Paid Search&quot;}]}'  https://invoca.net/api/@@SIGNAL_API_VERSION/transactions.json
+</code></pre>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<p>The Signal API clearly identifies errors when a request cannot be
+processed.</p>
+<p><strong>Invalid Inputs</strong></p>
+<p>If invalid parameters are passed, an error will be returned with a 403
+response code.</p>
+<p>For example, if a <strong>transaction_id</strong> or <strong>call_start_time</strong> are not
+passed in the request, the following error will be returned.</p>
+<p><strong>Response (403 Forbidden):</strong></p>
+<pre><code>{
+  &quot;errors&quot;: {
+    &quot;class&quot;: &quot;InvalidInput&quot;,
+    &quot;invalid_data&quot;: &quot;transaction_id, call_record_id, or call_start_time must not be empty&quot;
+  }
+}
+</code></pre>
+<p>If there are multiple issues with the request, we will do our best to
+package all of the issues together in one response message.</p>
+<p><strong>Example Bad Request</strong></p>
+<pre><code>{
+  &quot;search&quot;: {
+    &quot;transaction_id&quot;: &quot;0000000-0000000A&quot;
+  },
+  &quot;signals&quot;: [
+    {
+      &quot;name&quot;: &quot;sale&quot;,
+      &quot;custom_parameter_1&quot;: &quot;12345&quot;
+    },
+    {
+      &quot;revenue&quot;: &quot;1,000&quot;,
+      &quot;value&quot;: &quot;true&quot;
+    },
+    {
+      &quot;name&quot;: &quot;sale&quot;,
+      &quot;description&quot;: &quot;duplicate&quot;
+    }
+  ],
+  &quot;custom_data&quot;: [
+    {
+      &quot;value&quot;: &quot;no_name&quot;
+    },
+    {
+      &quot;name&quot;: &quot;no_value&quot;
+    }
+  ],
+  &quot;oauth_token&quot;: &quot;&lt;YOUR OAUTH TOKEN&gt;&quot;
+}
+</code></pre>
+<p><strong>Response (403 Forbidden):</strong></p>
+<pre><code>{
+  &quot;errors&quot;: {
+    &quot;class&quot;: &quot;InvalidInput&quot;,
+    &quot;invalid_data&quot;: &quot;The following params in 'signals' are not supported in this version: custom_parameter_1, description; signals[1] 'name' is required; 'name' for signals[0] and signals[2] must be unique; 'name' for custom_data[0] is required; 'value' for custom_data[1] is required&quot;
+  }
+}
+</code></pre>
+<hr />
+<p><strong>Record Invalid Error</strong></p>
+<p>In the case that we are not able to find all of the issues in the
+request before processing, we will package up any errors that occur
+during processing with the following error response:</p>
+<p><strong>Response (403 Forbidden):</strong></p>
+<pre><code>{
+  &quot;errors&quot;: {
+    &quot;class&quot;: &quot;RecordInvalid&quot;,
+    &quot;invalid_data&quot;: &quot;Validation failed: Signals are limited to 100&quot;
+  }
+}
+</code></pre>
+<hr />
+<p><strong>Record Not Found Error</strong></p>
+<p>If no record is found for the search parameters that are passed in the
+request, an error will be returned with a 404 response code. For
+example, if a call cannot be found for the search parameters passed, the
+following error will be returned.</p>
+<p><strong>Response (404 Not Found):</strong></p>
+<pre><code>{
+  &quot;errors&quot;: {
+    &quot;class&quot;: &quot;RecordNotFound&quot;,
+    &quot;invalid_data&quot;: &quot;No call found. Please refer to the documentation.&quot;
+  }
+}
+</code></pre>
+<hr />
+<p><strong>Permission Errors</strong></p>
+<p>If you do not have access to the Signal API, the following error will be
+returned with a 403 response code.</p>
+<p><strong>Response (403 Forbidden):</strong></p>
+<pre><code>{
+  &quot;errors&quot;: {
+    &quot;class&quot;: &quot;UnauthorizedOperation&quot;,
+    &quot;invalid_data&quot;: &quot;You do not have permissions to perform the requested operation.&quot;
+  }
+}
+</code></pre>
+<hr />
+<p><strong>Authorization Errors</strong></p>
+<p>If you do not have access to the <strong>advertiser_id_from_network</strong>,
+<strong>advertiser_campaign_id_from_network</strong>, or the <strong>network_id</strong> an
+error will be returned with a 403 response code. For example, if you
+pass an <strong>advertiser_id_from_network</strong> that you do not have access
+to, the following error will be returned.</p>
+<p><strong>Response (403 Forbidden):</strong></p>
+<pre><code>{
+  &quot;errors&quot;: {
+    &quot;class&quot;: &quot;UnauthorizedAdvertiser&quot;,
+    &quot;invalid_data&quot;: &quot;You do not have access to this advertiser&quot;
+  }
+}
+</code></pre>
+<h2 id="signal-transactions-rollup"><a class="header" href="#signal-transactions-rollup">Signal Transactions Rollup</a></h2>
+<p><strong>Note</strong>: This specific section only applies if you have begun using the
+Signal Transactions Rollup feature. This will only apply to calls that
+occur <strong>after</strong> the date that this feature is enabled. If you are unsure
+about whether you are using this feature, please contact the Invoca
+Customer Successs team.</p>
+<p>All Signals and Custom Data within a single request will be grouped
+together based on the value of the field <strong>partner_unique_id</strong>. There
+will be a single transaction for each group created. These new
+transactions will have the transaction type <em>Post Call Event</em>.</p>
+<p>A maximum of 10 transactions can be applied for a single request.
+However, this limit does not apply to the number of Signals or Custom
+Data included in a single grouping. See the <strong>Best Practices</strong> section
+for understanding why this limit is enforced.</p>
+<p>Request Parameter changes:</p>
+<ul>
+<li>The existing fields <strong>partner_unique_id</strong> and
+<strong>occurred_at_time</strong> can now be specified at the top-level of a
+request following the same formatting described above. This will be
+applied to all signals and custom data in the request.</li>
+<li>These fields can still be specified inline with each signal, but
+signals with different values for <strong>partner_unique_id</strong> will be
+not be grouped together.</li>
+<li>If specified inline for a specific signal, it will take precedence
+for that signal over the top-level value.</li>
+<li>Custom Data fields will be grouped together into a Post Call Event
+transaction using the top-level <strong>partner_unique_id</strong> (this may be
+omitted and will default to the empty string).</li>
+</ul>
+<p>Using a single <strong>partner_unique_id</strong> at the top level, such that it
+will be used for all Signals and Custom Data, is <strong>highly recommended</strong>.
+This will minimize the number of transactions that show up in the
+Transaction Detail reports and the Transactions API.</p>
+<p>Response Parameter changes:</p>
+<ul>
+<li>The <strong>signals</strong> array will contain an entry for each Post Call Event
+Transaction created.</li>
+<li>Since Signals may be grouped, the name and value of each Post Call
+Event Transaction will be a comma-separated list corresponding to
+the signals grouped within.</li>
+<li>Custom Data fields will not be displayed here, but will be applied
+to the Post Call Event transaction corresponding the the top-level
+<strong>partner_unique_id</strong></li>
+</ul>
+<p><strong>Example Request</strong></p>
+<pre><code>{
+  &quot;search&quot;: {
+    &quot;transaction_id&quot;: &quot;00000000-00000001&quot;
+  },
+  &quot;partner_unique_id&quot;: &quot;1&quot;,
+  &quot;occurred_at_time&quot;: &quot;2019-02-14T13:30:04Z&quot;,
+  &quot;signals&quot;: [{
+    &quot;name&quot;: &quot;Quote&quot;, &quot;revenue&quot;: &quot;100.0&quot;
+  }, {
+    &quot;name&quot;: &quot;Appointment Made&quot;, &quot;value&quot;: &quot;false&quot;
+  }],
+  &quot;custom_data&quot;: [{
+    &quot;name&quot;: &quot;line_of_business&quot;,
+    &quot;value&quot;: &quot;Great Deals&quot;
+  }, {
+    &quot;name&quot;: &quot;utm_source&quot;,
+    &quot;value&quot;: &quot;google.com&quot;
+  }],
+  &quot;oauth_token&quot;: &quot;&lt;YOUR OAUTH TOKEN&gt;&quot;
+}
+</code></pre>
+<p><strong>Example Response</strong></p>
+<pre><code>{
+  &quot;signals&quot;: [{
+    &quot;transaction_id&quot;: &quot;00000000-0000000A&quot;,
+    &quot;corrects_transaction_id&quot;: null,
+    &quot;name&quot;: &quot;Quote,Appointment Made&quot;,
+    &quot;partner_unique_id&quot;: &quot;1&quot;,
+    &quot;occurred_at_time_t&quot;: &quot;1550179818&quot;,
+    &quot;occurred_at_time&quot;: &quot;2019-02-14T13:30:04Z&quot;,
+    &quot;revenue&quot;: &quot;100.0&quot;,
+    &quot;value&quot;: &quot;true,false&quot;
+  }],
+  &quot;call&quot;: {
+    &quot;transaction_id&quot;: &quot;00000000-00000001&quot;,
+    &quot;corrects_transaction_id&quot;: null,
+    &quot;start_time_t&quot;: &quot;1435993200&quot;,
+    &quot;call_start_time&quot;: &quot;2015-07-04T07:00:00Z&quot;
+  }
+}
+</code></pre>
+<p><strong>Additional Errors</strong></p>
+<p>We no longer support specifying <strong>revenue</strong> at the top level header of
+the request. Revenue must be specified on each Signal.</p>
+<pre><code>{
+  &quot;errors&quot;: {
+    &quot;class&quot;: &quot;RecordInvalid&quot;,
+    &quot;invalid_data&quot;: &quot;Revenue must be specified on each Signal instead of at the top level header of the request&quot;
+  }
+}
+</code></pre>
+<h2 id="updates-and-idempotency"><a class="header" href="#updates-and-idempotency">Updates and Idempotency</a></h2>
+<p><strong>Notice for users of the Signal Transactions Rollup feature:</strong></p>
+<p>If you are using the Signal Transactions Rollup feature (see section
+<em>Signal Transactions Rollup</em> above), some of the Updates and Idempotency
+information below has changed slightly.</p>
+<p>Signals and Custom Data are considered unique by <strong>partner_unique_id</strong>
+only; name is <em>not</em> considered. Signals and Custom data are grouped into
+transactions according to <strong>partner_unique_id</strong>. If a request supplies
+the same <strong>partner_unique_id</strong> as a previous transaction, the previous
+transaction will be updated with the content of the new request.</p>
+<p>The information below regarding Updates and Idempotency still applies,
+but with this distinction.</p>
+<p><strong>Signals:</strong></p>
+<p>Signals are considered unique by a combination of <strong>name</strong> and
+<strong>partner_unique_id</strong>. For example, if you make two requests with the
+same <strong>name</strong> and <strong>partner_unique_id</strong>, the other params in the
+second request will update the original signal’s fields</p>
+<p>Therefore, if you make two requests with the same params, the signal
+will not be updated nor will a new one be made. It is safe then to
+re-post API requests without fear of duplicate data.</p>
+<p>If you change the <strong>partner_unique_id</strong>, a second signal of the same
+name will be associated with the transaction.</p>
+<hr />
+<p>Example of creating two signals (on a single call) then updating one</p>
+<p><strong>HTTP POST parameters</strong> - first request (creates both signals, which
+are valid due to unique <strong>partner_unique_id</strong>):</p>
+<pre><code>{
+  &quot;search&quot;: {
+    &quot;transaction_id&quot;: &quot;00000000-00000001&quot;
+  },
+  &quot;signals&quot;: [{
+    &quot;name&quot;: &quot;Quote&quot;,
+    &quot;partner_unique_id&quot;: &quot;1&quot;
+  }, {
+    &quot;name&quot;: &quot;Quote&quot;,
+    &quot;partner_unique_id&quot;: &quot;2&quot;
+  }],
+  &quot;oauth_token&quot;: &quot;&lt;YOUR OAUTH TOKEN&gt;&quot;
+}
+</code></pre>
+<p><strong>Response (200 OK):</strong></p>
+<pre><code>{
+  &quot;signals&quot;: [{
+    &quot;transaction_id&quot;: &quot;00000000-0000000A&quot;,
+    &quot;corrects_transaction_id&quot;: null,
+    &quot;name&quot;: &quot;Quote&quot;,
+    &quot;partner_unique_id&quot;: &quot;1&quot;,
+    &quot;occurred_at_time_t&quot;: &quot;1440607999&quot;,
+    &quot;occurred_at_time&quot;: &quot;2015-08-26T16:53:19Z&quot;,
+    &quot;value&quot;: &quot;true&quot;
+  }, {
+    &quot;transaction_id&quot;: &quot;00000000-0000000B&quot;,
+    &quot;corrects_transaction_id&quot;: null,
+    &quot;name&quot;: &quot;Quote&quot;,
+    &quot;partner_unique_id&quot;: &quot;2&quot;,
+    &quot;occurred_at_time_t&quot;: &quot;1440608000&quot;,
+    &quot;occurred_at_time&quot;: &quot;2015-08-26T16:53:20Z&quot;,
+    &quot;value&quot;: &quot;true&quot;
+  }],
+  &quot;call&quot;: {
+    &quot;transaction_id&quot;: &quot;00000000-00000001&quot;,
+    &quot;corrects_transaction_id&quot;: null,
+    &quot;start_time_t&quot;: &quot;1435993200&quot;,
+    &quot;call_start_time&quot;: &quot;2015-07-04T07:00:00Z&quot;
+  }
+}
+</code></pre>
+<p><strong>HTTP POST Parameters</strong> - second request (updates first request):</p>
+<pre><code>{
+  &quot;search&quot;: {
+    &quot;transaction_id&quot;: &quot;00000000-00000001&quot;
+  },
+  &quot;signals&quot;: [{
+    &quot;name&quot;: &quot;Quote&quot;,
+    &quot;partner_unique_id&quot;: &quot;1&quot;
+  }],
+  &quot;oauth_token&quot;: &quot;&lt;YOUR OAUTH TOKEN&gt;&quot;
+}
+</code></pre>
+<p><strong>Response (200 OK):</strong></p>
+<pre><code>{
+  &quot;signals&quot;: [{
+    &quot;transaction_id&quot;: &quot;00000000-0000000C&quot;,
+    &quot;corrects_transaction_id&quot;: &quot;00000000-0000000A&quot;,
+    &quot;name&quot;: &quot;Quote&quot;,
+    &quot;partner_unique_id&quot;: &quot;1&quot;,
+    &quot;occurred_at_time_t&quot;: &quot;1440607999&quot;,
+    &quot;occurred_at_time&quot;: &quot;2015-08-26T16:53:19Z&quot;,
+    &quot;value&quot;: &quot;true&quot;
+  }],
+  &quot;call&quot;: {
+    &quot;transaction_id&quot;: &quot;00000000-00000001&quot;,
+    &quot;corrects_transaction_id&quot;: null,
+    &quot;start_time_t&quot;: &quot;1435993200&quot;,
+    &quot;call_start_time&quot;: &quot;2015-07-04T07:00:00Z&quot;
+  }
+}
+</code></pre>
+<p>Note: even though this second request was an update to the first and
+will appear in reports as updating the first signal, a new signal
+transaction ID is returned. This is because a correction has been made
+to the first signal, and this new transaction ID is what will appear in
+webhooks and the Transactions API.</p>
+<hr />
+<p><strong>Custom Data:</strong></p>
+<p>Custom Data fields are considered unique by their <strong>name</strong> only.</p>
+<p>Each request made will apply a correction to the target call and
+override any existing Custom Data Field values for the provided fields.</p>
+<p>Therefore, subsequent requests will create corrections and appear as
+though the original call was updated.</p>
+<p>Note: Any signals provided or associated previously with the call with
+also reflect these new Custom Data values.</p>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<p><strong>Applying Many Signals to a Single Call:</strong> Batching your Signal
+applications into a single request is the most performant way to apply
+many signals. You may not include more than 10 signals in a single
+request. If you need to apply <em>more</em> than 10, batch your requests into
+as few groups of 10 as possible.</p>
+<p>Note: As signals are applied to the call, the response time of the API
+will increase with each signal added. In extreme cases, this can cause
+the request time to exceed the 120 seconds API timeout resulting in an
+504 Gateway Timeout HTTP response.</p>
+<pre><code># FAST: Apply multiple signals in a single request
+curl -k -H &quot;Content-Type: application/json&quot; -X POST -d '{&quot;search&quot;: {&quot;transaction_id&quot;: &quot;00000000-00000001&quot;},&quot;signals&quot;: [{&quot;name&quot;: &quot;sale&quot;,&quot;partner_unique_id&quot;: &quot;1&quot;,&quot;occurred_at_time&quot;: &quot;1440607313&quot;,&quot;revenue&quot;: &quot;100.00&quot;,&quot;value&quot;: &quot;true&quot;},{&quot;name&quot;: &quot;Quality Call&quot;,&quot;value&quot;: &quot;true&quot;},{&quot;name&quot;: &quot;Appointment Made&quot;,&quot;partner_unique_id&quot;: &quot;1&quot;,&quot;occurred_at_time&quot;: &quot;1440607313&quot;,&quot;value&quot;: &quot;false&quot;}], &quot;custom_data&quot;: [{&quot;name&quot;: &quot;channel&quot;, &quot;value&quot;: &quot;Paid Search&quot;}],&quot;oauth_token&quot;: &lt;YOUR OAUTH TOKEN&gt;}'  https://invoca.net/api/@@SIGNAL_API_VERSION/transactions.json
+
+# SLOW: Attempt to apply multiple signals in multiple requests
+curl -k -H &quot;Content-Type: application/json&quot; -X POST -d '{&quot;search&quot;: {&quot;transaction_id&quot;: &quot;00000000-00000001&quot;},&quot;signals&quot;: [{&quot;name&quot;: &quot;sale&quot;,&quot;partner_unique_id&quot;: &quot;1&quot;,&quot;occurred_at_time&quot;: &quot;1440607313&quot;,&quot;revenue&quot;: &quot;100.00&quot;,&quot;value&quot;: &quot;true&quot;}], &quot;custom_data&quot;: [{&quot;name&quot;: &quot;channel&quot;, &quot;value&quot;: &quot;Paid Search&quot;}],&quot;oauth_token&quot;: &lt;YOUR OAUTH TOKEN&gt;}'  https://invoca.net/api/@@SIGNAL_API_VERSION/transactions.json
+curl -k -H &quot;Content-Type: application/json&quot; -X POST -d '{&quot;search&quot;: {&quot;transaction_id&quot;: &quot;00000000-00000001&quot;},&quot;signals&quot;: [{&quot;name&quot;: &quot;Quality Call&quot;,&quot;value&quot;: &quot;true&quot;}], &quot;custom_data&quot;: [{&quot;name&quot;: &quot;channel&quot;, &quot;value&quot;: &quot;Paid Search&quot;}],&quot;oauth_token&quot;: &lt;YOUR OAUTH TOKEN&gt;}'  https://invoca.net/api/@@SIGNAL_API_VERSION/transactions.json
+curl -k -H &quot;Content-Type: application/json&quot; -X POST -d '{&quot;search&quot;: {&quot;transaction_id&quot;: &quot;00000000-00000001&quot;},&quot;signals&quot;: [{&quot;name&quot;: &quot;Appointment Made&quot;,&quot;partner_unique_id&quot;: &quot;1&quot;,&quot;occurred_at_time&quot;: &quot;1440607313&quot;,&quot;value&quot;: &quot;false&quot;}], &quot;custom_data&quot;: [{&quot;name&quot;: &quot;channel&quot;, &quot;value&quot;: &quot;Paid Search&quot;}],&quot;oauth_token&quot;: &lt;YOUR OAUTH TOKEN&gt;}'  https://invoca.net/api/@@SIGNAL_API_VERSION/transactions.json
+</code></pre>
+<h2 id="migration-notes"><a class="header" href="#migration-notes">Migration Notes</a></h2>
+<p><strong>Note</strong>: If using the Signal Transactions Rollup feature (see section
+<em>Signal Transactions Rollup</em> above), this section can be ignored.</p>
+<p>For upgrading from version <code>2017-02-01</code></p>
+<ul>
+<li>URL path was changed</li>
+<li>Added <strong>custom_data</strong> key, an array of objects for setting custom
+data values</li>
+<li><strong>signal</strong> key was changed to <strong>signals</strong>, which is now an array of
+the same objects with the following changes
+<ul>
+<li>Removed support for <strong>custom_parameter_1</strong>,
+<strong>custom_parameter_2</strong>, <strong>custom_parameter_3</strong> (use new
+<strong>custom_data</strong> outer key instead)</li>
+<li>Removed support for <strong>sale_amount</strong> (use <strong>revenue</strong> instead)</li>
+<li>Removed support for <strong>description</strong> (recommended to use Custom
+Data Fields instead)</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../api_documentation/bulk_ringpool_api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../api_documentation/manage_api_credentials.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../api_documentation/bulk_ringpool_api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../api_documentation/manage_api_credentials.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
