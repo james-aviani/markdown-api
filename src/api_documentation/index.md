@@ -1,7 +1,7 @@
 API Documentation
 =================
 
-The platform provides the following APIs:
+The platform provides a number of APIs:
 
 [Transactions API](./transactions_api/index.md) - provides read-only access to call transaction
 data.
@@ -14,7 +14,7 @@ partner platforms.
 information (or other conversion events) from a server back into the
 platform.
 
-[Bulk Ringpool](./bulkbulk_ringpool_api) -allocates a dynamic, trackable promo phone number
+[Bulk Ringpool](./bulk_ringpool_api.md) -allocates a dynamic, trackable promo phone number
 from a RingPool (designed to handle a high volume of requests per
 second).
 
