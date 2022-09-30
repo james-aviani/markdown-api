@@ -1,4 +1,6 @@
+
 # Summary
+- [Intro](./index.md)
 
 - [Basics](./basics/index.md)
   - [Design Principles](./basics/design_principles.md)
@@ -9,4 +11,5 @@
 - [API Documentation](./api_documentation/index.md)
   - [Transactions API](./api_documentation/transactions_api/index.md)
   - [Manage API Credentials](./api_documentation/manage_api_credentials.md)
+  
 - [Web Integration](./web_integration.md)
