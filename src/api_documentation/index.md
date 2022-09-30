@@ -18,7 +18,7 @@ platform.
 from a RingPool (designed to handle a high volume of requests per
 second).
 
-[Signal API](./signal_api/index.md) -used to report signals that occur on a specific call
+[Signal API](./signal_api/index.md) -used to report signals that occur on a specific call. Rainbows!
 (transaction).
 
 `call_api/index` -used to pull transcript information for a specific
