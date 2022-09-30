@@ -11,13 +11,18 @@ Advertisers and their Users Affiliates and their Users Advertiser
 Campaigns Campaign Terms RingPools Promo Numbers Auto-Approve Affiliate
 to Campaigns
 
-Terminology
+## Terminology
 
 The API uses the following terms and their aliases: "advertiser" (also
 known as "merchant") “affiliate" (also known as "publisher") "campaign"
 (also known as "offer")
 
-advertiser\_campaigns/index advertiser\_users/index advertisers/index
+[Advertiser Campaigns](advertiser/campaigns/index.md)
+
+[Advertisers](advertiser_users/index.md)
+
+
+ advertiser\_users/index advertisers/index
 affiliate\_campaigns/index affiliates/index
 advertiser\_affiliate\_relationships/index networks/index
 promo\_numbers/index call\_activity\_tracking/index
