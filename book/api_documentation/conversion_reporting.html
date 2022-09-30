@@ -1,0 +1,489 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Conversion Reporting API - Invoca Markdown API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../basics/index.html"><strong aria-hidden="true">2.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basics/design_principles.html"><strong aria-hidden="true">2.1.</strong> Design Principles</a></li><li class="chapter-item expanded "><a href="../basics/error_handling.html"><strong aria-hidden="true">2.2.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="../basics/ppc_platform_authentication_access_tokens.html"><strong aria-hidden="true">2.3.</strong> PPC Platform Authentication</a></li><li class="chapter-item expanded "><a href="../basics/saml_single_sign_on.html"><strong aria-hidden="true">2.4.</strong> Single Sign On</a></li></ol></li><li class="chapter-item expanded "><a href="../api_documentation/index.html"><strong aria-hidden="true">3.</strong> API Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api_documentation/transactions_api/index.html"><strong aria-hidden="true">3.1.</strong> Transactions API</a></li><li class="chapter-item expanded "><a href="../api_documentation/network_integration/index.html"><strong aria-hidden="true">3.2.</strong> Network Integrations API</a></li><li class="chapter-item expanded "><a href="../api_documentation/bulk_ringpool_api.html"><strong aria-hidden="true">3.3.</strong> Bulk Ringpool API</a></li><li class="chapter-item expanded "><a href="../api_documentation/ringpool_api.html"><strong aria-hidden="true">3.4.</strong> Ringpool API</a></li><li class="chapter-item expanded "><a href="../api_documentation/manage_api_credentials.html"><strong aria-hidden="true">3.5.</strong> Manage API Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="../web_integration.html"><strong aria-hidden="true">4.</strong> Web Integration</a></li><li class="chapter-item expanded "><a href="../api_documentation/index.html"><strong aria-hidden="true">5.</strong> Depricated APIs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api_documentation/conversion_reporting.html" class="active"><strong aria-hidden="true">5.1.</strong> Conversion Reporting API</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Invoca Markdown API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>Conversion Reporting (Deprecated) ====================</p>
+<div style="margin-bottom: 20px; padding: 15px; background-color: #fff3cd; color: #333;"><p>
+  <b>Notice:</b>
+  <a href="https://developers.invoca.net/en/latest/api_documentation/signal_api/index.html">Signal API</a> is now the supported way for reporting that a sale or other post call event occurred on calls.
+  The Conversion Reporting API is deprecated and no longer available for new accounts.</p>
+</div>
+<p>The Conversion Reporting API (formerly referred to as the “Call Center”
+or “Sales Reporting” API) is used to report completed order information
+(or other conversion events) from a server back into the platform.
+Reporting order information through the API allows advertisers to
+compensate publishers for sales that convert over the phone (or on the
+web). Additionally, Advertiser Direct campaigns using the Conversion
+Reporting API with search campaigns can report back revenue generated
+for each phone call so that search bids can be optimized.</p>
+<p>For existing customers looking for deprecated documentation on the
+conversion pixel and email approach to reporting conversions, see these
+pages:</p>
+<p><code>conversion_reporting_email</code></p>
+<p><code>conversion_reporting_pixel</code></p>
+<h1 id="authentication"><a class="header" href="#authentication">Authentication</a></h1>
+<p>The Conversion Reporting API requires specific credentials and a
+conversion reporting ID for the URL. Note: creating new credentials is
+no longer supported. Please use the <code>signal_api/index</code> instead.</p>
+<h1 id="client-api-wrappers"><a class="header" href="#client-api-wrappers">Client API Wrappers</a></h1>
+<p>The following working examples with wrapper code to integrate in Ruby,
+Java, PHP or .NET are available:</p>
+<blockquote>
+<p><a href="https://github.com/Invoca/call_center_api-ruby">Ruby</a></p>
+<p><a href="https://github.com/Invoca/call_center_api-java">Java</a></p>
+<p><a href="https://github.com/Invoca/call_center_api-php">PHP</a></p>
+<p><a href="https://github.com/Invoca/call_center_api-dotnet">.NET</a></p>
+</blockquote>
+<h1 id="post-or-put-to-a-url"><a class="header" href="#post-or-put-to-a-url">POST (or PUT) to a URL</a></h1>
+<p>Send call results to Invoca servers in the form of an HTTP POST. cURL is
+recommended because it is simple and preinstalled on most machines. The
+extended example later in this document breaks down each part of a cURL
+POST.</p>
+<p>Here is an example of a URL POST:</p>
+<p><code>https://api0.invoca.net/api/@@CONVERSION_API_VERSION/calls/23.xml</code></p>
+<p>where “&quot; is the API version and &quot;23&quot; is the Conversion Reporting ID
+(previously known as Call Center ID) for your account on the platform.</p>
+<p>For “Publisher Promotion” or Fixed Price “Bundled” campaigns, the
+Conversion Reporting ID is found on the Campaign Summary tab,
+Integration section.</p>
+<p>Remember to check the HTTP status code returned for error checking. This
+helps greatly when debugging.</p>
+<h1 id="parameters"><a class="header" href="#parameters">Parameters</a></h1>
+<p>Passed in standard HTML “application/form-url-encoded” format. Put
+quotes around all parameter values being passed in the API call.</p>
+<h1 id="report-a-saleconversion-on-a-call"><a class="header" href="#report-a-saleconversion-on-a-call">Report a sale/conversion on a call</a></h1>
+<blockquote>
+<p>Required</p>
+<p><span class="title-ref">start_time_t:</span> 10 digit start time of
+the call in UTC seconds since 1/1/70, also known as Unix time_t. The
+start time does not have to be exact since clocks will not be
+perfectly synchronized.</p>
+<p>Additionally, one of the following two parameters is highly
+recommended:</p>
+<blockquote>
+<p><span class="title-ref">calling_phone_number:</span> ANI in E.164
+format +country national_number; example: ‘+18885551212’.</p>
+<p><span class="title-ref">duration_in_seconds:</span> Length of the
+call. Used for finding the call that drove the sale, not used to
+check against payout conditions. Like start time,
+duration_in_seconds does not have to be exact, we use it find the
+closest match.</p>
+</blockquote>
+<p>Optional</p>
+<p><span class="title-ref">reference_id:</span>
+(call_center_call_id): This ID must be unique for each call across
+a call center’s calls. The ID is set the first time the call result is
+POSTed for a call. To update the call result, use the same ID.</p>
+<p><span class="title-ref">called_phone_number:</span> DNIS in E.164
+format +country national_number; example: ‘+18885551212’. UK and
+Spanish numbers are also supported. Their country codes are +44 and
++34 respectively.</p>
+<p><span class="title-ref">use_http_status:</span> 1 or blank will use
+HTTP status corresponding to success/failure. If set to 0, the HTTP
+status will always be 200 OK and the actual status and error message
+will be in the response body. See the Status section below.</p>
+</blockquote>
+<h1 id="report-a-new-web-conversion"><a class="header" href="#report-a-new-web-conversion">Report a new web conversion</a></h1>
+<blockquote>
+<p>Required</p>
+<p><span class="title-ref">web_conversion:</span> Set to “1” to indicate
+a conversion that is not tied to a call (default is 0).</p>
+<p><span class="title-ref">reference_id:</span> This ID must be unique
+for each conversion.</p>
+<p><span class="title-ref">advertiser_campaign_id:</span> The ID of the
+advertiser campaign in the platform.</p>
+<p><span class="title-ref">affiliate_id_from_network:</span> The
+affiliate or publisher ID (of the main network) that is credited for
+the web conversion; the publisher must be approved to the advertiser
+campaign specified above.</p>
+<p>Optional</p>
+<p><span class="title-ref">use_http_status:</span> 1 or blank will use
+HTTP status corresponding to success/failure. If set to 0, the HTTP
+status will always be 200 OK and the actual status and error message
+will be in the response body. See the Status section below.</p>
+</blockquote>
+<h1 id="add-to-an-existing-web-conversion"><a class="header" href="#add-to-an-existing-web-conversion">Add to an existing web conversion</a></h1>
+<blockquote>
+<p>Required</p>
+<p><span class="title-ref">web_conversion:</span> Set to “1” to indicate
+a conversion that is not tied to a call (default is 0).</p>
+<p><span class="title-ref">parent_reference_id:</span> This is the
+reference_id that was passed in when creating the initial web
+conversion.</p>
+<p>Optional</p>
+<p><span class="title-ref">use_http_status:</span> 1 or blank will use
+HTTP status corresponding to success/failure. If set to 0, the HTTP
+status will always be 200 OK and the actual status and error message
+will be in the response body. See the Status section below.</p>
+</blockquote>
+<h1 id="shared-parameters-for-sales-and-web-conversions"><a class="header" href="#shared-parameters-for-sales-and-web-conversions">Shared parameters for sales and web conversions</a></h1>
+<blockquote>
+<p>Optional (for Tracking Sales)</p>
+<p><span class="title-ref">reason_code:</span> the conversion event
+specified in the payout conditions in the campaign. This code is free
+form and left to the advertiser to decide.</p>
+<p>(For example, ‘R’ for Referred to customer service, or ‘info’ for
+requesting information. Or simply “Y” for a lead was generated and “N”
+if not.)</p>
+<p><span class="title-ref">sku_list[]:</span> Product SKU (repeat this
+parameter for multiple products). Like the reason_code, the sku_list
+is a free form description of the product or service sold and can be
+used as a payout condition.</p>
+<p>Note: when reporting via email, the CSV header name should be
+“sku_list” and a single comma separated list should be provided.</p>
+<p><span class="title-ref">quantity_list[]:</span> Quantity 1 or
+greater for the corresponding product SKU listed in the sku_list
+(Quantities must appear in same order as the SKUs listed in the
+sku_list.)</p>
+<p>Note: when reporting via email, the CSV header name should be
+“quantity_list” and a single comma separated list should be provided.</p>
+<p><span class="title-ref">sale_currency:</span> USD, GBP, EUR, etc.</p>
+<p><span class="title-ref">sale_amount:</span> Amount to 2 decimal
+places, or 0.00 if no sale (does not include shipping).</p>
+<p>Optional (for Remarketing)</p>
+<p><span class="title-ref">email_address:</span> email address in
+RFC2822 format or empty string</p>
+<p><span class="title-ref">name:</span> first last name</p>
+<p><span class="title-ref">address1:</span> Address line 1.</p>
+<p><span class="title-ref">address2:</span> Address line 2.</p>
+<p><span class="title-ref">order_city:</span> City</p>
+<p><span class="title-ref">state_or_province:</span> State of Province</p>
+<p><span class="title-ref">country:</span> Country</p>
+<p><span class="title-ref">zip_code:</span> Postal Code</p>
+<p><span class="title-ref">home_phone_number:</span> Home phone in case
+there are any questions, in E.164 format.</p>
+<p><span class="title-ref">cell_phone_number:</span> Cell phone in case
+there are any questions, in E.164 format.</p>
+<p><span class="title-ref">opt_in_SMS:</span> 1 if authorized to send
+SMS reply or 0 or empty if not.</p>
+</blockquote>
+<h1 id="status"><a class="header" href="#status">Status</a></h1>
+<p>The HTTP status returned is 201 Created for a successful POST (or a 200
+OK for a successful PUT), a 4xx code if one of the parameters is
+incorrect, or a 5xx code if a server error occurred. In the latter two
+error cases, a detailed error class and message are returned in XML in
+the body, for example:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Error&gt;
+    &lt;Class&gt;NotFound&lt;/Class&gt;
+    &lt;Message&gt;Couldn't find call around time 1262895406 from caller +1 8053825533
+     &lt;/Message&gt;
+&lt;/Error&gt;
+</code></pre>
+<p>If &amp;use_http_status=0 is given, the status is always returned as 200
+Ok or 201 Created. This can be helpful in order to see the detailed
+error message in the body when working with HTTP libraries that just
+return the status code when there are errors without exposing the body.</p>
+<h1 id="security"><a class="header" href="#security">Security</a></h1>
+<p>All posts must use HTTPS BASIC authentication and use pre-assigned
+usernames and passwords. Contact <a href="mailto:questions@invoca">questions@invoca</a> to request
+Conversion Reporting API credentials.</p>
+<h1 id="high-availability"><a class="header" href="#high-availability">High availability</a></h1>
+<p>The initial POST should choose randomly (or alternately) between
+api0.invoca.net and api1.invoca.net. If a POST fails for any reason,
+retry the POST on the other one.</p>
+<h1 id="idempotency"><a class="header" href="#idempotency">Idempotency</a></h1>
+<p>Sales are considered unique using a combination of start_time_t +
+SKU_list + reason code. POSTs with duplicate keys (same call, sku list,
+reason code) behave as follows:</p>
+<ol>
+<li>If the values passed are unchanged, the reported conversion remains
+unchanged and is not duplicated.</li>
+<li>If different values are passed, the original conversion is updated
+with the new values.</li>
+</ol>
+<p>POSTs with unique keys always create new conversion transactions.</p>
+<h1 id="frequency"><a class="header" href="#frequency">Frequency</a></h1>
+<p>Updates can be sent at any frequency from once a minute to once a day.
+Customers prefer to get their data as fast as possible, so the best
+practice is to get as close to once a minute as practical.</p>
+<h1 id="example"><a class="header" href="#example">Example</a></h1>
+<p>The example below uses cURL to demonstrate a POST that updates a call.</p>
+<pre><code>curl -u 'example@callcenter.api:secretPW'` \
+'https://api0.invoca.net/api/@@CONVERSION_API_VERSION/calls/23.xml' -k -v \` \
+-d reference_id='2935812450'             \
+-d start_time_t='1273589993'             \
+-d duration_in_seconds=300               \
+-d called_phone_number='+18773593504'    \
+-d calling_phone_number='+12143283408'   \
+-d reason_code='S'                       \
+-d sku_list[]='DVD'                      \
+-d quantity_list[]=2                     \
+-d sku_list[]='cleaner'                  \
+-d quantity_list[]=1                     \
+-d sale_currency='USD'                   \
+-d sale_amount='60.50'                   \
+-d email_address='jane@doe.com'          \
+-d opt_in_SMS='1'                        \
+-d name='Jane Doe'                       \
+-d address1='123 Mockingbird Lane'       \
+-d address2='Unit 2'                     \
+-d order_city='Chicago'                  \
+-d state_or_province='IL'                \
+-d country='US'                          \
+-d cell_phone_number='+13125170488'      \
+-d use_http_status='1'&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+<p>Output:</p>
+<pre><code>HTTP/1.1 201 Created
+Date: Fri, 25 Jun 2010 18:22:45 GMT
+Server: Mongrel 1.1.5
+Status: 201
+X-Runtime: 189
+Cache-Control: no-cache
+Content-Type: application/xml; charset=utf-8
+Content-Length: 1
+Set-Cookie: SERVERID=; Expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/
+Via: 1.1 www.invoca.net
+Vary: Accept-Encoding
+</code></pre>
+<h1 id="example-breakdown"><a class="header" href="#example-breakdown">Example Breakdown</a></h1>
+<p>This is a description of some of the parameters in the previous cURL
+example.</p>
+<blockquote>
+<p><span class="title-ref">curl -u
+'example@callcenter.api:secretPW'</span> If using cURL, this is how
+credentials are passed. The username is 'example@callcenter.api' and
+the password is ‘secretPW’. The two strings need to be separated with
+a colon character.</p>
+<p><span
+class="title-ref">'https://api0.invoca.net/api/@@CONVERSION_API_VERSION/calls/23.xml'
+-k -v</span> The URL where the call result is sent. The API version is
+“@@CONVERSION_API_VERSION” and the unique Conversion Reporting ID is
+“23”.</p>
+<p><span class="title-ref">-d reference_id='2935812450'</span> This ID
+(if provided) needs to be unique for each call within a call center,
+and is the handle for future updates on this call or conversion.</p>
+<p><span class="title-ref">-d start_time_t='1273589993'</span> The call
+start time in UTC.</p>
+<p><span class="title-ref">-d called_phone_number='+18773593504'</span>
+The phone number the caller dialed.</p>
+<p><span class="title-ref">-d
+calling_phone_number='+12143283408'</span> The phone number the
+caller is calling from.</p>
+<p><span class="title-ref">-d sku_list[]='DVD'</span></p>
+<p><span class="title-ref">-d quantity_list[]=2</span></p>
+<p><span class="title-ref">-d sku_list[]='cleaner'</span></p>
+<p><span class="title-ref">-d quantity_list[]=1</span> sku_list and
+quantity_list are closely related. The quantity_list must appear in
+the same order as the sku_list. For this example, the sku DVD has a
+quantity value of 2 while cleaner is 1.</p>
+</blockquote>
+<h1 id="search-algorithm-to-find-matching-call"><a class="header" href="#search-algorithm-to-find-matching-call">Search Algorithm to Find Matching Call</a></h1>
+<p>We look for an exact match for calls associated with the call center,
+using these parameters, if given:</p>
+<p><span class="title-ref">reference_id</span> <span
+class="title-ref">calling_phone_number</span></p>
+<p>If more than one call is found with those exact parameters (or the
+parameters are not provided), we then look for calls that are closest to
+the start_time_t and duration_in_seconds, if provided. Due to the
+distribution of call attribute data, the start_time_t parameter is
+given a different weight than duration_in_seconds so that a call with
+a start time difference of 20 seconds is equivalent to a call with a
+duration difference of 1 second.</p>
+<p>Please note that the Conversion Reporting API is idempotent (if you
+repost sales data already captured, it is not accidentally counted
+twice), so repost any sales that receive a failure.</p>
+<h2 id="endpoint"><a class="header" href="#endpoint">Endpoint:</a></h2>
+<p><code>https://invoca.net/api/@@CONVERSION_API_VERSION/calls/&lt;converstion_reporting_id&gt;.xml</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../api_documentation/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../api_documentation/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

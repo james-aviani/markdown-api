@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ringpool API - Invoca Markdown API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="../basics/index.html"><strong aria-hidden="true">2.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basics/design_principles.html"><strong aria-hidden="true">2.1.</strong> Design Principles</a></li><li class="chapter-item expanded "><a href="../basics/error_handling.html"><strong aria-hidden="true">2.2.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="../basics/ppc_platform_authentication_access_tokens.html"><strong aria-hidden="true">2.3.</strong> PPC Platform Authentication</a></li><li class="chapter-item expanded "><a href="../basics/saml_single_sign_on.html"><strong aria-hidden="true">2.4.</strong> Single Sign On</a></li></ol></li><li class="chapter-item expanded "><a href="../api_documentation/index.html"><strong aria-hidden="true">3.</strong> API Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api_documentation/transactions_api/index.html"><strong aria-hidden="true">3.1.</strong> Transactions API</a></li><li class="chapter-item expanded "><a href="../api_documentation/network_integration/index.html"><strong aria-hidden="true">3.2.</strong> Network Integrations API</a></li><li class="chapter-item expanded "><a href="../api_documentation/bulk_ringpool_api.html"><strong aria-hidden="true">3.3.</strong> Bulk Ringpool API</a></li><li class="chapter-item expanded "><a href="../api_documentation/ringpool_api.html" class="active"><strong aria-hidden="true">3.4.</strong> Ringpool API</a></li><li class="chapter-item expanded "><a href="../api_documentation/manage_api_credentials.html"><strong aria-hidden="true">3.5.</strong> Manage API Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="../web_integration.html"><strong aria-hidden="true">4.</strong> Web Integration</a></li><li class="chapter-item expanded "><a href="../api_documentation/index.html"><strong aria-hidden="true">5.</strong> Depricated APIs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../api_documentation/conversion_reporting.html"><strong aria-hidden="true">5.1.</strong> Conversion Reporting API</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Invoca Markdown API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>Ringpool API (Legacy) ========</p>
+<p>The RingPool API allocates a dynamic, trackable promo phone number from
+a RingPool. A valid call to the RingPool API returns a promo number and
+a formatted click-through URL.</p>
+<p>Example API URL:</p>
+<p><code>https://&lt;NETWORK&gt;.invoca.net/api/@@RINGPOOL_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;site=&lt;VALUE1&gt;&amp;location=&lt;VALUE2&gt;</code></p>
+<p>&lt;NETWORK&gt;.invoca.net is the vanity URL for your platform. Note
+that your platform may exist on invoca.net or ringrevenue.com, and both
+are supported.</p>
+<p>&lt;RingPool_ID&gt; is a unique identifier for the RingPool.</p>
+<p>&lt;KEY&gt; is the RingPool key, which is provided through the RingPool
+wizard UI on the platform and should be kept a secret. The parameters
+are explained in detail below in the “API Parameters” section.</p>
+<p>The parameter names should match those chosen in the RingPool wizard, or
+you can use generic parameter names “param1”, “param2”, etc. Here is the
+same API URL with the generic parameter names:</p>
+<p><code>https://&lt;NETWORK&gt;.invoca.net/api/@@RINGPOOL_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;param1=&lt;VALUE1&gt;&amp;param2=&lt;VALUE2&gt;</code></p>
+<p><strong>Note:</strong> To access the campaign RingPool’s API URL navigate to the
+Campaign Summary’s RingPool tab and click “get api url” under Actions.</p>
+<p><img src="../_static/ringpool_actions.png" alt="image" /></p>
+<br />
+<p><img src="../_static/ringpool_get_api_url.png" alt="image" /></p>
+<h1 id="response-formats"><a class="header" href="#response-formats">Response Formats</a></h1>
+<p>The response can be in any of these formats: <strong>xml</strong>, <strong>json</strong> or
+<strong>csv</strong>. To choose the format, change the “.xml” shown in the URL to
+“.json” or “.csv”. Below are example responses for each format:</p>
+<p><strong>xml</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Response&gt;
+  &lt;PromoNumberFormatted&gt;888-390-6665&lt;/PromoNumberFormatted&gt;
+  &lt;PromoNumber&gt;8883906665&lt;/PromoNumber&gt;
+  &lt;TrackingUrl&gt; https://invoca.net/c/1/14-11-109?us=http%3A%2F%2Fwww2.invoca.net%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665&lt;/TrackingUrl&gt;
+&lt;/Response&gt;
+</code></pre>
+<p><strong>json</strong></p>
+<pre><code>{&quot;promo_number_formatted&quot;:&quot;888-390-6665&quot;,&quot;tracking_url&quot;:&quot; https://invoca.net/c/1/14-11-109?us=http%3A%2F%2Fwww2.invoca.net.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665&quot;,&quot;promo_number&quot;:&quot;8883906665&quot;}
+</code></pre>
+<p><strong>csv</strong></p>
+<pre><code>PromoNumberFormatted,PromoNumber,TrackingUrl
+888-390-6665,8883906665, https://invoca.net/c/1/14-11-109?us=http%3A%2F%2Fwww2.invoca.net%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665
+</code></pre>
+<p>As an advertiser, you can allocate promo numbers from your RingPool on
+behalf of your affiliates in order to credit them for calls. Just
+include an affiliate id in the query string of the API URL. Note that
+the parameter name depends on your network and the value must match what
+is set on the affiliate account. Here is an example URL for tracking
+affiliate 5567 on a network that calls the affiliate id a pid:</p>
+<p><code>https://&lt;NETWORK&gt;.invoca.net/api/@@NETWORK_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;pid=5567&amp;sid=adwords</code></p>
+<h1 id="errors"><a class="header" href="#errors">Errors</a></h1>
+<p>The RingPool API clearly identifies errors when a request can not be
+processed. If the number pool is exhausted, the API still succeeds
+because an overflow number is returned. If a parameter is not passed
+correctly, an XML error response is returned as shown below:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Error&gt;
+  &lt;Class&gt;InvalidKey&lt;/Class&gt;
+  &lt;Message&gt;API Key 'A329F4DC002168' is not valid for resource '1'&lt;/Message&gt;
+&lt;/Error&gt;
+</code></pre>
+<p>Or for json or csv, the following text is returned:</p>
+<p><span class="title-ref">InvalidKey: API Key 'A329F4DC002168' is not
+valid for resource '1'</span></p>
+<p>If a system error occurs, an InternalServiceError is returned in XML (or
+simple text for json or csv) with an integer error handle. Contact
+<a href="mailto:questions@invoca.com">questions@invoca.com</a> to determine the root cause of the error.</p>
+<h1 id="ringpool-types"><a class="header" href="#ringpool-types">RingPool Types</a></h1>
+<p>All 6 RingPool types are supported by the API:</p>
+<p>Custom</p>
+<p>Custom + Search keywords</p>
+<p>Search Engine + Keywords</p>
+<p>Search Engine + Keyword ID</p>
+<p>Referral Domains</p>
+<p>Referral Domains + search</p>
+<h2 id="api-parameters"><a class="header" href="#api-parameters">API Parameters</a></h2>
+<p>The API supports the following parameters:</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ring_pool_key=</td>
+<td>The required authentication key unique for each RingPool.</td>
+</tr>
+<tr class="even">
+<td>param1=</td>
+<td>[Custom RingPools only] The first custom parameter of a Custom RingPool. This parameter can also be represented by the custom name.</td>
+</tr>
+<tr class="odd">
+<td>param2=</td>
+<td>[Custom RingPools only] The second custom parameter of a Custom RingPool.</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>param10=</td>
+<td>[Custom RingPools only] The 10th custom parameter of a Custom RingPool.</td>
+</tr>
+<tr class="even">
+<td>search_engine=</td>
+<td>[All Search RingPool types] The search engine name used to process the search query.</td>
+</tr>
+<tr class="odd">
+<td>search_keywords=</td>
+<td>[All Search RingPool types] The search query that the user searched for.</td>
+</tr>
+<tr class="even">
+<td>search_keyword_id=</td>
+<td>[Keyword ID Search RingPool only] The keyword ID that is associated to the query string.</td>
+</tr>
+<tr class="odd">
+<td>landing_page=</td>
+<td>[Optional] The landing page URL to be shown in reporting.</td>
+</tr>
+<tr class="even">
+<td>referrer=</td>
+<td>[All Referral Domain types, otherwise Optional] Can be used instead of search_engine= and search_keyword. Those values will be inferred by parsing the referrer URL. Referral Domains + search will use referrer as the Traffic Source if either the search_engine or search_keywords are omitted.</td>
+</tr>
+<tr class="odd">
+<td>mobile_click_to_call=</td>
+<td>[Optional] Option to return mobile enabled links that populate the smartphone’s dialer when clicked.</td>
+</tr>
+<tr class="even">
+<td>&lt;NETWORK_AFFILIATE_ID_NAME&gt;</td>
+<td>[Optional] This parameter name is determined by the network and is used to allocate a promo number on behalf of the publisher. For example, pid=2341</td>
+</tr>
+</tbody>
+</table>
+<p>Endpoint:</p>
+<p><code>https://invoca.net/api/@@RINGPOOL_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;param1=&lt;VALUE1&gt;&amp;param2=&lt;VALUE2&gt;</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../api_documentation/bulk_ringpool_api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../api_documentation/manage_api_credentials.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../api_documentation/bulk_ringpool_api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../api_documentation/manage_api_credentials.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
