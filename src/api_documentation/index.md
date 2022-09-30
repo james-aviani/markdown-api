@@ -14,7 +14,7 @@ partner platforms.
 information (or other conversion events) from a server back into the
 platform.
 
-`bulk_ringpool_api` -allocates a dynamic, trackable promo phone number
+[Bulk Ringpool](./bulkbulk_ringpool_api) -allocates a dynamic, trackable promo phone number
 from a RingPool (designed to handle a high volume of requests per
 second).
 

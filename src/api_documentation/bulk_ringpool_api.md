@@ -28,20 +28,20 @@ the Bulk RingPool API.
 Request Body
 ------------
 
-The JSON POST body of the request has a top level key "request" which
+The JSON POST body of the request has a top level key \"request\" which
 maps to an array of hashes, where each hash contains a RingPool API URL.
 The array must contain at least one entry. The requests follow a similar
 format to the RingPool API, which can be found here.
 
 Each hash in the array must contain a key/value pair with a key of
-"api\_suffix". The value must be the suffix of the RingPool API URL
-after /api/&lt;date&gt;.
+\"api\_suffix\". The value must be the suffix of the RingPool API URL
+after /api/\<date\>.
 
 At least one RingPool parameter must be present in each allocation
 request, even if the value is an empty string.
 
 Each element may also include a key/value pair with a key of
-"request\_id". If provided, it is echoed in the response for context.
+\"request\_id\". If provided, it is echoed in the response for context.
 This parameter is optional and does not have to be unique across the
 hashes.
 
@@ -50,13 +50,15 @@ the requests.
 
 Below is an example of the JSON request body:
 
-    {
-     "requests":[
-      {"api_suffix":"<RING_POOL_ID>/allocate_number.json?ring_pool_key=<RING_POOL_KEY>&m1=autos&m2=ford","request_id":"193C5F"},
-      {"api_suffix":"<RING_POOL_ID>/allocate_number.json?ring_pool_key=<RING_POOL_KEY>&m1=antiques","request_id":"58CD4F"},
-      {"api_suffix":"<RING_POOL_ID>/allocate_number.json?ring_pool_key=<RING_POOL_KEY>&m1=electronics","request_id":"E3901B"}
-     ]
-    }
+``` {.sourceCode .json}
+{
+ "requests":[
+  {"api_suffix":"<RING_POOL_ID>/allocate_number.json?ring_pool_key=<RING_POOL_KEY>&m1=autos&m2=ford","request_id":"193C5F"},
+  {"api_suffix":"<RING_POOL_ID>/allocate_number.json?ring_pool_key=<RING_POOL_KEY>&m1=antiques","request_id":"58CD4F"},
+  {"api_suffix":"<RING_POOL_ID>/allocate_number.json?ring_pool_key=<RING_POOL_KEY>&m1=electronics","request_id":"E3901B"}
+ ]
+}
+```
 
 Response Body
 -------------
@@ -65,23 +67,25 @@ The response format is in **JSON**.
 
 Below is an example response (whitespace added for clarity):
 
-    {
-     "responses":[
-      {"request_id":"193C5F","promo_number_formatted":"888-390-6665","promo_number":"8883906665","tracking_url":"http://ringrevenue.com/c/1/14-11-109?us=http%3A%2F%2Fwww2.ringrevenue.com.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665"},
-      {"request_id":"58CD4F","promo_number_formatted":"877-455-1120","promo_number":"8774551120","tracking_url":"http://ringringrevenue.com/c/1/19-99-210?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8774551120%26PPCPN%3D8774551120"},
-      {"request_id":"E3901B","promo_number_formatted":"866-971-5703","promo_number":"8669715703","tracking_url":"http://ringringrevenue.com/c/1/38-240-19?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8669715703%26PPCPN%3D8669715703","overflow":true}
-     ]
-    }
+``` {.sourceCode .json}
+{
+ "responses":[
+  {"request_id":"193C5F","promo_number_formatted":"888-390-6665","promo_number":"8883906665","tracking_url":"http://ringrevenue.com/c/1/14-11-109?us=http%3A%2F%2Fwww2.ringrevenue.com.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665"},
+  {"request_id":"58CD4F","promo_number_formatted":"877-455-1120","promo_number":"8774551120","tracking_url":"http://ringringrevenue.com/c/1/19-99-210?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8774551120%26PPCPN%3D8774551120"},
+  {"request_id":"E3901B","promo_number_formatted":"866-971-5703","promo_number":"8669715703","tracking_url":"http://ringringrevenue.com/c/1/38-240-19?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8669715703%26PPCPN%3D8669715703","overflow":true}
+ ]
+}
+```
 
-Note the last response above has <span
-class="title-ref">"overflow":true</span>. This indicates that the number
-returned is the overflow number for that RingPool. To simplify the
-normal case when the number is not overflow, the key-value pair is
-omitted when the value would be <span class="title-ref">false</span>.
+Note the last response above has [\"overflow\":true]{.title-ref}. This
+indicates that the number returned is the overflow number for that
+RingPool. To simplify the normal case when the number is not overflow,
+the key-value pair is omitted when the value would be
+[false]{.title-ref}.
 
 Additionally, Bulk API responses return the total server processing
 (this does not include transit) time for the request in the header under
-the key “processing-time”, and is reported in milliseconds.
+the key "processing-time", and is reported in milliseconds.
 
 Errors
 ------
@@ -90,25 +94,29 @@ The Bulk RingPool API clearly identifies errors when a request can not
 be processed. For example, when the parameters are incorrect, an error
 response will be returned for that row in the response as shown below:
 
-    {
-       "responses":[
-        {"request_id":"193C5F","promo_number_formatted":"888-390-6665","promo_number":"8883906665","tracking_url":"http://ringrevenue.com/c/1/14-11-109?us=http%3A%2F%2Fwww2.ringrevenue.com.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665"},
-        {"request_id":"58CD4F","error_class":"InvalidKey","message":"API Key 'A329F4DC002168' is not valid for resource '1'"},
-        {"request_id":"E3901B","promo_number_formatted":"866-971-5703","promo_number":"8669715703","tracking_url":"http://ringringrevenue.com/c/1/38-240-19?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8669715703%26PPCPN%3D8669715703"}
-      ]
-    }
+``` {.sourceCode .json}
+{
+   "responses":[
+    {"request_id":"193C5F","promo_number_formatted":"888-390-6665","promo_number":"8883906665","tracking_url":"http://ringrevenue.com/c/1/14-11-109?us=http%3A%2F%2Fwww2.ringrevenue.com.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665"},
+    {"request_id":"58CD4F","error_class":"InvalidKey","message":"API Key 'A329F4DC002168' is not valid for resource '1'"},
+    {"request_id":"E3901B","promo_number_formatted":"866-971-5703","promo_number":"8669715703","tracking_url":"http://ringringrevenue.com/c/1/38-240-19?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8669715703%26PPCPN%3D8669715703"}
+  ]
+}
+```
 
 As another example, the following exception occurs when attempting to
 allocate a number with the RingPool API against a RingPool that has been
 set up to use the Bulk RingPool API:
 
+``` {.sourceCode .json}
+{
+    "errors":
     {
-        "errors":
-        {
-            "invalid_data":"Numbers are automatically allocated by the PNAPI server",
-            "class”:”OnlyBulkNumberAllocationAllowed"
-        }
+        "invalid_data":"Numbers are automatically allocated by the PNAPI server",
+        "class”:”OnlyBulkNumberAllocationAllowed"
     }
+}
+```
 
 If a system error occurs, an InternalServiceError will be returned with
 an integer error handle.

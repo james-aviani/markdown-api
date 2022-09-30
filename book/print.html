@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="basics/index.html"><strong aria-hidden="true">2.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basics/design_principles.html"><strong aria-hidden="true">2.1.</strong> Design Principles</a></li><li class="chapter-item expanded "><a href="basics/error_handling.html"><strong aria-hidden="true">2.2.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="basics/ppc_platform_authentication_access_tokens.html"><strong aria-hidden="true">2.3.</strong> PPC Platform Authentication</a></li><li class="chapter-item expanded "><a href="basics/saml_single_sign_on.html"><strong aria-hidden="true">2.4.</strong> Single Sign On</a></li></ol></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">3.</strong> API Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/transactions_api/index.html"><strong aria-hidden="true">3.1.</strong> Transactions API</a></li><li class="chapter-item expanded "><a href="api_documentation/network_integration/index.html"><strong aria-hidden="true">3.2.</strong> Network Integrations API</a></li><li class="chapter-item expanded "><a href="api_documentation/manage_api_credentials.html"><strong aria-hidden="true">3.3.</strong> Manage API Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="web_integration.html"><strong aria-hidden="true">4.</strong> Web Integration</a></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">5.</strong> Depricated APIs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/conversion_reporting.html"><strong aria-hidden="true">5.1.</strong> Conversion Reporting API</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="basics/index.html"><strong aria-hidden="true">2.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basics/design_principles.html"><strong aria-hidden="true">2.1.</strong> Design Principles</a></li><li class="chapter-item expanded "><a href="basics/error_handling.html"><strong aria-hidden="true">2.2.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="basics/ppc_platform_authentication_access_tokens.html"><strong aria-hidden="true">2.3.</strong> PPC Platform Authentication</a></li><li class="chapter-item expanded "><a href="basics/saml_single_sign_on.html"><strong aria-hidden="true">2.4.</strong> Single Sign On</a></li></ol></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">3.</strong> API Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/transactions_api/index.html"><strong aria-hidden="true">3.1.</strong> Transactions API</a></li><li class="chapter-item expanded "><a href="api_documentation/network_integration/index.html"><strong aria-hidden="true">3.2.</strong> Network Integrations API</a></li><li class="chapter-item expanded "><a href="api_documentation/bulk_ringpool_api.html"><strong aria-hidden="true">3.3.</strong> Bulk Ringpool API</a></li><li class="chapter-item expanded "><a href="api_documentation/ringpool_api.html"><strong aria-hidden="true">3.4.</strong> Ringpool API</a></li><li class="chapter-item expanded "><a href="api_documentation/manage_api_credentials.html"><strong aria-hidden="true">3.5.</strong> Manage API Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="web_integration.html"><strong aria-hidden="true">4.</strong> Web Integration</a></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">5.</strong> Depricated APIs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/conversion_reporting.html"><strong aria-hidden="true">5.1.</strong> Conversion Reporting API</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -500,7 +500,7 @@ partner platforms.</p>
 <p><a href="api_documentation/./conversion_reporting/index.html">Converstion Reporting</a> -provides the ability to report completed order
 information (or other conversion events) from a server back into the
 platform.</p>
-<p><code>bulk_ringpool_api</code> -allocates a dynamic, trackable promo phone number
+<p><a href="api_documentation/./bulkbulk_ringpool_api">Bulk Ringpool</a> -allocates a dynamic, trackable promo phone number
 from a RingPool (designed to handle a high volume of requests per
 second).</p>
 <p><code>ringpool</code> -allocates a dynamic, trackable promo phone number from a
@@ -569,6 +569,233 @@ call_recording_condition/index prompt_recordings/index
 set_call_recorded_prompt/index whisper_prompts/index
 custom_challenge_prompts/index custom_ivr_error_prompts/index
 automated_speech_recognition/index ringpools/index</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bulk-ringpool-api"><a class="header" href="#bulk-ringpool-api">Bulk Ringpool API</a></h1>
+<p>Before using the Bulk RingPool API, contact <a href="mailto:api_documentation/questions@invoca.com">questions@invoca.com</a> to
+enable the Bulk RingPool API feature. It is recommended that before you
+enable the feature on your production platform, testing occurs on a demo
+or test platform.</p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>The Bulk RingPool API is designed to efficiently handle a high volume of
+requests per second. A persistent connection is strongly recommended.</p>
+<p>The Bulk RingPool API can be enabled on the Network, Advertiser, or
+Publisher level. Note that once enabled, all new or edited RingPools are
+served by the Bulk RingPool API and not the RingPool API. Therefore, if
+the Bulk RingPool API is enabled for your organization, attempting to
+access a RingPool with the RingPool API results in an error.</p>
+<p>Finally, also note that only the custom RingPool type is supported by
+the Bulk RingPool API.</p>
+<p><strong>Example API URL:</strong></p>
+<p><code>POST https://pnapi.invoca.net/api/@@PNAPI_VERSION/bulk.json</code></p>
+<h2 id="request-body"><a class="header" href="#request-body">Request Body</a></h2>
+<p>The JSON POST body of the request has a top level key &quot;request&quot; which
+maps to an array of hashes, where each hash contains a RingPool API URL.
+The array must contain at least one entry. The requests follow a similar
+format to the RingPool API, which can be found here.</p>
+<p>Each hash in the array must contain a key/value pair with a key of
+&quot;api_suffix&quot;. The value must be the suffix of the RingPool API URL
+after /api/&lt;date&gt;.</p>
+<p>At least one RingPool parameter must be present in each allocation
+request, even if the value is an empty string.</p>
+<p>Each element may also include a key/value pair with a key of
+&quot;request_id&quot;. If provided, it is echoed in the response for context.
+This parameter is optional and does not have to be unique across the
+hashes.</p>
+<p>Individual responses and request IDs are returned in the same order as
+the requests.</p>
+<p>Below is an example of the JSON request body:</p>
+<pre><code class="language-{.sourceCode .json}">{
+ &quot;requests&quot;:[
+  {&quot;api_suffix&quot;:&quot;&lt;RING_POOL_ID&gt;/allocate_number.json?ring_pool_key=&lt;RING_POOL_KEY&gt;&amp;m1=autos&amp;m2=ford&quot;,&quot;request_id&quot;:&quot;193C5F&quot;},
+  {&quot;api_suffix&quot;:&quot;&lt;RING_POOL_ID&gt;/allocate_number.json?ring_pool_key=&lt;RING_POOL_KEY&gt;&amp;m1=antiques&quot;,&quot;request_id&quot;:&quot;58CD4F&quot;},
+  {&quot;api_suffix&quot;:&quot;&lt;RING_POOL_ID&gt;/allocate_number.json?ring_pool_key=&lt;RING_POOL_KEY&gt;&amp;m1=electronics&quot;,&quot;request_id&quot;:&quot;E3901B&quot;}
+ ]
+}
+</code></pre>
+<h2 id="response-body"><a class="header" href="#response-body">Response Body</a></h2>
+<p>The response format is in <strong>JSON</strong>.</p>
+<p>Below is an example response (whitespace added for clarity):</p>
+<pre><code class="language-{.sourceCode .json}">{
+ &quot;responses&quot;:[
+  {&quot;request_id&quot;:&quot;193C5F&quot;,&quot;promo_number_formatted&quot;:&quot;888-390-6665&quot;,&quot;promo_number&quot;:&quot;8883906665&quot;,&quot;tracking_url&quot;:&quot;http://ringrevenue.com/c/1/14-11-109?us=http%3A%2F%2Fwww2.ringrevenue.com.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665&quot;},
+  {&quot;request_id&quot;:&quot;58CD4F&quot;,&quot;promo_number_formatted&quot;:&quot;877-455-1120&quot;,&quot;promo_number&quot;:&quot;8774551120&quot;,&quot;tracking_url&quot;:&quot;http://ringringrevenue.com/c/1/19-99-210?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8774551120%26PPCPN%3D8774551120&quot;},
+  {&quot;request_id&quot;:&quot;E3901B&quot;,&quot;promo_number_formatted&quot;:&quot;866-971-5703&quot;,&quot;promo_number&quot;:&quot;8669715703&quot;,&quot;tracking_url&quot;:&quot;http://ringringrevenue.com/c/1/38-240-19?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8669715703%26PPCPN%3D8669715703&quot;,&quot;overflow&quot;:true}
+ ]
+}
+</code></pre>
+<p>Note the last response above has [&quot;overflow&quot;:true]{.title-ref}. This
+indicates that the number returned is the overflow number for that
+RingPool. To simplify the normal case when the number is not overflow,
+the key-value pair is omitted when the value would be
+[false]{.title-ref}.</p>
+<p>Additionally, Bulk API responses return the total server processing
+(this does not include transit) time for the request in the header under
+the key &quot;processing-time&quot;, and is reported in milliseconds.</p>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<p>The Bulk RingPool API clearly identifies errors when a request can not
+be processed. For example, when the parameters are incorrect, an error
+response will be returned for that row in the response as shown below:</p>
+<pre><code class="language-{.sourceCode .json}">{
+   &quot;responses&quot;:[
+    {&quot;request_id&quot;:&quot;193C5F&quot;,&quot;promo_number_formatted&quot;:&quot;888-390-6665&quot;,&quot;promo_number&quot;:&quot;8883906665&quot;,&quot;tracking_url&quot;:&quot;http://ringrevenue.com/c/1/14-11-109?us=http%3A%2F%2Fwww2.ringrevenue.com.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665&quot;},
+    {&quot;request_id&quot;:&quot;58CD4F&quot;,&quot;error_class&quot;:&quot;InvalidKey&quot;,&quot;message&quot;:&quot;API Key 'A329F4DC002168' is not valid for resource '1'&quot;},
+    {&quot;request_id&quot;:&quot;E3901B&quot;,&quot;promo_number_formatted&quot;:&quot;866-971-5703&quot;,&quot;promo_number&quot;:&quot;8669715703&quot;,&quot;tracking_url&quot;:&quot;http://ringringrevenue.com/c/1/38-240-19?us=http%3A%2F%2Fwww2.ringrevenue.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8669715703%26PPCPN%3D8669715703&quot;}
+  ]
+}
+</code></pre>
+<p>As another example, the following exception occurs when attempting to
+allocate a number with the RingPool API against a RingPool that has been
+set up to use the Bulk RingPool API:</p>
+<pre><code class="language-{.sourceCode .json}">{
+    &quot;errors&quot;:
+    {
+        &quot;invalid_data&quot;:&quot;Numbers are automatically allocated by the PNAPI server&quot;,
+        &quot;class”:”OnlyBulkNumberAllocationAllowed&quot;
+    }
+}
+</code></pre>
+<p>If a system error occurs, an InternalServiceError will be returned with
+an integer error handle.</p>
+<p>Contact <a href="mailto:api_documentation/questions@invoca.com">questions@invoca.com</a> to determine the root cause of such an
+error.</p>
+<div style="break-before: page; page-break-before: always;"></div><p>Ringpool API (Legacy) ========</p>
+<p>The RingPool API allocates a dynamic, trackable promo phone number from
+a RingPool. A valid call to the RingPool API returns a promo number and
+a formatted click-through URL.</p>
+<p>Example API URL:</p>
+<p><code>https://&lt;NETWORK&gt;.invoca.net/api/@@RINGPOOL_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;site=&lt;VALUE1&gt;&amp;location=&lt;VALUE2&gt;</code></p>
+<p>&lt;NETWORK&gt;.invoca.net is the vanity URL for your platform. Note
+that your platform may exist on invoca.net or ringrevenue.com, and both
+are supported.</p>
+<p>&lt;RingPool_ID&gt; is a unique identifier for the RingPool.</p>
+<p>&lt;KEY&gt; is the RingPool key, which is provided through the RingPool
+wizard UI on the platform and should be kept a secret. The parameters
+are explained in detail below in the “API Parameters” section.</p>
+<p>The parameter names should match those chosen in the RingPool wizard, or
+you can use generic parameter names “param1”, “param2”, etc. Here is the
+same API URL with the generic parameter names:</p>
+<p><code>https://&lt;NETWORK&gt;.invoca.net/api/@@RINGPOOL_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;param1=&lt;VALUE1&gt;&amp;param2=&lt;VALUE2&gt;</code></p>
+<p><strong>Note:</strong> To access the campaign RingPool’s API URL navigate to the
+Campaign Summary’s RingPool tab and click “get api url” under Actions.</p>
+<p><img src="api_documentation/../_static/ringpool_actions.png" alt="image" /></p>
+<br />
+<p><img src="api_documentation/../_static/ringpool_get_api_url.png" alt="image" /></p>
+<h1 id="response-formats"><a class="header" href="#response-formats">Response Formats</a></h1>
+<p>The response can be in any of these formats: <strong>xml</strong>, <strong>json</strong> or
+<strong>csv</strong>. To choose the format, change the “.xml” shown in the URL to
+“.json” or “.csv”. Below are example responses for each format:</p>
+<p><strong>xml</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Response&gt;
+  &lt;PromoNumberFormatted&gt;888-390-6665&lt;/PromoNumberFormatted&gt;
+  &lt;PromoNumber&gt;8883906665&lt;/PromoNumber&gt;
+  &lt;TrackingUrl&gt; https://invoca.net/c/1/14-11-109?us=http%3A%2F%2Fwww2.invoca.net%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665&lt;/TrackingUrl&gt;
+&lt;/Response&gt;
+</code></pre>
+<p><strong>json</strong></p>
+<pre><code>{&quot;promo_number_formatted&quot;:&quot;888-390-6665&quot;,&quot;tracking_url&quot;:&quot; https://invoca.net/c/1/14-11-109?us=http%3A%2F%2Fwww2.invoca.net.com%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665&quot;,&quot;promo_number&quot;:&quot;8883906665&quot;}
+</code></pre>
+<p><strong>csv</strong></p>
+<pre><code>PromoNumberFormatted,PromoNumber,TrackingUrl
+888-390-6665,8883906665, https://invoca.net/c/1/14-11-109?us=http%3A%2F%2Fwww2.invoca.net%2Fdemo%2F8x8_staging.html%3Fsid%3D8883906665%26PPCPN%3D8883906665
+</code></pre>
+<p>As an advertiser, you can allocate promo numbers from your RingPool on
+behalf of your affiliates in order to credit them for calls. Just
+include an affiliate id in the query string of the API URL. Note that
+the parameter name depends on your network and the value must match what
+is set on the affiliate account. Here is an example URL for tracking
+affiliate 5567 on a network that calls the affiliate id a pid:</p>
+<p><code>https://&lt;NETWORK&gt;.invoca.net/api/@@NETWORK_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;pid=5567&amp;sid=adwords</code></p>
+<h1 id="errors-1"><a class="header" href="#errors-1">Errors</a></h1>
+<p>The RingPool API clearly identifies errors when a request can not be
+processed. If the number pool is exhausted, the API still succeeds
+because an overflow number is returned. If a parameter is not passed
+correctly, an XML error response is returned as shown below:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Error&gt;
+  &lt;Class&gt;InvalidKey&lt;/Class&gt;
+  &lt;Message&gt;API Key 'A329F4DC002168' is not valid for resource '1'&lt;/Message&gt;
+&lt;/Error&gt;
+</code></pre>
+<p>Or for json or csv, the following text is returned:</p>
+<p><span class="title-ref">InvalidKey: API Key 'A329F4DC002168' is not
+valid for resource '1'</span></p>
+<p>If a system error occurs, an InternalServiceError is returned in XML (or
+simple text for json or csv) with an integer error handle. Contact
+<a href="mailto:api_documentation/questions@invoca.com">questions@invoca.com</a> to determine the root cause of the error.</p>
+<h1 id="ringpool-types"><a class="header" href="#ringpool-types">RingPool Types</a></h1>
+<p>All 6 RingPool types are supported by the API:</p>
+<p>Custom</p>
+<p>Custom + Search keywords</p>
+<p>Search Engine + Keywords</p>
+<p>Search Engine + Keyword ID</p>
+<p>Referral Domains</p>
+<p>Referral Domains + search</p>
+<h2 id="api-parameters"><a class="header" href="#api-parameters">API Parameters</a></h2>
+<p>The API supports the following parameters:</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ring_pool_key=</td>
+<td>The required authentication key unique for each RingPool.</td>
+</tr>
+<tr class="even">
+<td>param1=</td>
+<td>[Custom RingPools only] The first custom parameter of a Custom RingPool. This parameter can also be represented by the custom name.</td>
+</tr>
+<tr class="odd">
+<td>param2=</td>
+<td>[Custom RingPools only] The second custom parameter of a Custom RingPool.</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>param10=</td>
+<td>[Custom RingPools only] The 10th custom parameter of a Custom RingPool.</td>
+</tr>
+<tr class="even">
+<td>search_engine=</td>
+<td>[All Search RingPool types] The search engine name used to process the search query.</td>
+</tr>
+<tr class="odd">
+<td>search_keywords=</td>
+<td>[All Search RingPool types] The search query that the user searched for.</td>
+</tr>
+<tr class="even">
+<td>search_keyword_id=</td>
+<td>[Keyword ID Search RingPool only] The keyword ID that is associated to the query string.</td>
+</tr>
+<tr class="odd">
+<td>landing_page=</td>
+<td>[Optional] The landing page URL to be shown in reporting.</td>
+</tr>
+<tr class="even">
+<td>referrer=</td>
+<td>[All Referral Domain types, otherwise Optional] Can be used instead of search_engine= and search_keyword. Those values will be inferred by parsing the referrer URL. Referral Domains + search will use referrer as the Traffic Source if either the search_engine or search_keywords are omitted.</td>
+</tr>
+<tr class="odd">
+<td>mobile_click_to_call=</td>
+<td>[Optional] Option to return mobile enabled links that populate the smartphone’s dialer when clicked.</td>
+</tr>
+<tr class="even">
+<td>&lt;NETWORK_AFFILIATE_ID_NAME&gt;</td>
+<td>[Optional] This parameter name is determined by the network and is used to allocate a promo number on behalf of the publisher. For example, pid=2341</td>
+</tr>
+</tbody>
+</table>
+<p>Endpoint:</p>
+<p><code>https://invoca.net/api/@@RINGPOOL_API_VERSION/ring_pools/16/allocate_number.xml?ring_pool_key=&lt;KEY&gt;&amp;param1=&lt;VALUE1&gt;&amp;param2=&lt;VALUE2&gt;</code></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="manage-api-credentials"><a class="header" href="#manage-api-credentials">Manage API Credentials</a></h1>
 <p>Invoca's self-serve API token access is OAuth-compliant. Accessing APIs
 using the API token enables customers to access and in some cases modify
@@ -631,7 +858,7 @@ partner platforms.</p>
 <p><a href="api_documentation/./conversion_reporting/index.html">Converstion Reporting</a> -provides the ability to report completed order
 information (or other conversion events) from a server back into the
 platform.</p>
-<p><code>bulk_ringpool_api</code> -allocates a dynamic, trackable promo phone number
+<p><a href="api_documentation/./bulkbulk_ringpool_api">Bulk Ringpool</a> -allocates a dynamic, trackable promo phone number
 from a RingPool (designed to handle a high volume of requests per
 second).</p>
 <p><code>ringpool</code> -allocates a dynamic, trackable promo phone number from a
