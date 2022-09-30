@@ -3,14 +3,14 @@ API Documentation
 
 The platform provides the following APIs:
 
-`transactions_api/index` - provides read-only access to call transaction
+[Transactions API](./transactions_api/index.md) - provides read-only access to call transaction
 data.
 
-`network_integration/index` -supports the replication and
+[Network Integration](./network_integration/index.md) - supports the replication and
 synchronization of advertiser, publisher and campaign data between
 partner platforms.
 
-`conversion_reporting` -provides the ability to report completed order
+[Converstion Reporting](./conversion_reporting/index.md) -provides the ability to report completed order
 information (or other conversion events) from a server back into the
 platform.
 
