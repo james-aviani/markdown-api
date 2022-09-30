@@ -2,7 +2,7 @@
 # Summary
 - [Intro](./index.md)
 
-- [Basics](./basics/index.md)
+- [The Basics](./basics/index.md)
   - [Design Principles](./basics/design_principles.md)
   - [Error Handling](./basics/error_handling.md)
   - [PPC Platform Authentication](./basics/ppc_platform_authentication_access_tokens.md)
