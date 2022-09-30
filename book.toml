@@ -1,0 +1,6 @@
+[book]
+authors = ["James Aviani"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Invoca Markdown API"
