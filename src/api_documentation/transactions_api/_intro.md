@@ -80,9 +80,9 @@ The API takes the following optional query parameters:
 </table>
 
 In order to ensure that all transactions are returned when using the
-from= and to= date query parameters, you should store the last
+<code>from=</code> and <code>to=</code> date query parameters, you should store the last
 transaction id you have downloaded and pass it as the
-start\_after\_transaction\_id to the next request. Typical usage on the
+<code>start_after_transaction_id</code> to the next request. Typical usage on the
 polling interval is to repeatedly call the API until no rows are
 returned, meaning you have downloaded all transactions. Please note, the
 "to" and "from" date range parameters are both necessary, providing only

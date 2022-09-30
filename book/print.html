@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="basics/index.html"><strong aria-hidden="true">2.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basics/design_principles.html"><strong aria-hidden="true">2.1.</strong> Design Principles</a></li><li class="chapter-item expanded "><a href="basics/error_handling.html"><strong aria-hidden="true">2.2.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="basics/ppc_platform_authentication_access_tokens.html"><strong aria-hidden="true">2.3.</strong> PPC Platform Authentication</a></li><li class="chapter-item expanded "><a href="basics/saml_single_sign_on.html"><strong aria-hidden="true">2.4.</strong> Single Sign On</a></li></ol></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">3.</strong> API Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/transactions_api/index.html"><strong aria-hidden="true">3.1.</strong> Transactions API</a></li><li class="chapter-item expanded "><a href="api_documentation/network_integration/index.html"><strong aria-hidden="true">3.2.</strong> Network Integrations API</a></li><li class="chapter-item expanded "><a href="api_documentation/bulk_ringpool_api.html"><strong aria-hidden="true">3.3.</strong> Bulk Ringpool API</a></li><li class="chapter-item expanded "><a href="api_documentation/signal_api/index.html"><strong aria-hidden="true">3.4.</strong> Signal API</a></li><li class="chapter-item expanded "><a href="api_documentation/manage_api_credentials.html"><strong aria-hidden="true">3.5.</strong> Manage API Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="web_integration.html"><strong aria-hidden="true">4.</strong> Web Integration</a></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">5.</strong> Depricated APIs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/conversion_reporting.html"><strong aria-hidden="true">5.1.</strong> Conversion Reporting API</a></li><li class="chapter-item expanded "><a href="api_documentation/ringpool_api.html"><strong aria-hidden="true">5.2.</strong> Ringpool API</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="basics/index.html"><strong aria-hidden="true">2.</strong> Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basics/design_principles.html"><strong aria-hidden="true">2.1.</strong> Design Principles</a></li><li class="chapter-item expanded "><a href="basics/error_handling.html"><strong aria-hidden="true">2.2.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="basics/ppc_platform_authentication_access_tokens.html"><strong aria-hidden="true">2.3.</strong> PPC Platform Authentication</a></li><li class="chapter-item expanded "><a href="basics/saml_single_sign_on.html"><strong aria-hidden="true">2.4.</strong> Single Sign On</a></li></ol></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">3.</strong> API Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/transactions_api/index.html"><strong aria-hidden="true">3.1.</strong> Transactions API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/transactions_api/network_user.html"><strong aria-hidden="true">3.1.1.</strong> Network User</a></li><li class="chapter-item expanded "><a href="transactions_api/advertiser_user.html"><strong aria-hidden="true">3.1.2.</strong> Advertiser User</a></li><li class="chapter-item expanded "><a href="transactions_api/affiliate_user.html"><strong aria-hidden="true">3.1.3.</strong> Publisher / Affiliate</a></li></ol></li><li class="chapter-item expanded "><a href="api_documentation/network_integration/index.html"><strong aria-hidden="true">3.2.</strong> Network Integrations API</a></li><li class="chapter-item expanded "><a href="api_documentation/bulk_ringpool_api.html"><strong aria-hidden="true">3.3.</strong> Bulk Ringpool API</a></li><li class="chapter-item expanded "><a href="api_documentation/signal_api/index.html"><strong aria-hidden="true">3.4.</strong> Signal API</a></li><li class="chapter-item expanded "><a href="api_documentation/manage_api_credentials.html"><strong aria-hidden="true">3.5.</strong> Manage API Credentials</a></li></ol></li><li class="chapter-item expanded "><a href="web_integration.html"><strong aria-hidden="true">4.</strong> Web Integration</a></li><li class="chapter-item expanded "><a href="api_documentation/index.html"><strong aria-hidden="true">5.</strong> Depricated APIs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="api_documentation/conversion_reporting.html"><strong aria-hidden="true">5.1.</strong> Conversion Reporting API</a></li><li class="chapter-item expanded "><a href="api_documentation/ringpool_api.html"><strong aria-hidden="true">5.2.</strong> Ringpool API</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -503,7 +503,7 @@ platform.</p>
 <p><a href="api_documentation/./bulk_ringpool_api.html">Bulk Ringpool API</a> -allocates a dynamic, trackable promo phone number
 from a RingPool (designed to handle a high volume of requests per
 second).</p>
-<p><a href="api_documentation/./signal_api/index.html">Signal API</a> -used to report signals that occur on a specific call. Rainbows!
+<p><a href="api_documentation/./signal_api/index.html">Signal API</a> -used to report signals that occur on a specific call.
 (transaction).</p>
 <p><code>call_api/index</code> -used to pull transcript information for a specific
 call (transcript).</p>
@@ -530,21 +530,823 @@ transactions_api/index bulk_ringpool_api ringpool signal_api/index
 call_api/index call_ingestion_api/index
 calls_in_progress_api/index conversion_reporting</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="transactions-api"><a class="header" href="#transactions-api">Transactions API</a></h1>
-<p>The Transactions API is accessible using the API credentials generated
-on the platform.</p>
+<p>The Transactions API returns call attributes, marketing data, and signal conversions. Additionally, correction transactions are returned that serve as corrections to previous call transactions. The API follows REST conventions. Perform an HTTPS GET to the URL with the format in which you’d like to receive data. The following response formats are supported.</p>
+<ul>
+<li>CSV</li>
+<li>XML</li>
+<li>JSON</li>
+</ul>
+<p>The API is accessible using the API credentials generated
+on the platform. </p>
 <p>
   View the support documentation for <a href="https://community.invoca.com/t5/developer-features/how-to-access-invoca-call-data-programmatically-via-api/ta-p/602">best practices in accessing Invoca Call Data via the Transactions API</a>.
 </p>
 <p>The data returned depends on your account type. To see which fields you
 will see, select an account type below.</p>
-<p><code>network_user</code></p>
-<p><code>advertiser_user</code></p>
-<p><code>affiliate_user</code></p>
+<p><code>network_user</code> <a href="api_documentation/transactions_api/./transactions_api/network_user.html">Network / Brand</a></p>
+<p><code>advertiser_user</code> <a href="api_documentation/transactions_api/./transactions_api/advertiser_user.html">Advertiser / Merchant</a></p>
+<p><code>affiliate_user</code> <a href="api_documentation/transactions_api/./transactions_api/affiliate_user.html">Publisher / Affiliate</a></p>
 <p>Please note, the documentation shows a superset of fields available.
 Your response may differ depending on the features enabled on the
 platform being accessed. Make a sample request to the API to identify
 the fields returned.</p>
-<p>network_user advertiser_user affiliate_user</p>
+<h1 id="response"><a class="header" href="#response">Response</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="network--brand"><a class="header" href="#network--brand">Network / Brand</a></h1>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Description and URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>csv</td>
+<td>Comma-Separated Values, or really Anything-Separated Values (see column_separator= below). Returns an optional header row followed by one row for each transaction, with delimited values for each row. <code>https://{NETWORK NAME}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv</code></td>
+</tr>
+<tr class="even">
+<td>xml</td>
+<td>Returns an XML document with an array of Transaction elements. <code>https://{NETWORK NAME}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.xml</code></td>
+</tr>
+<tr class="odd">
+<td>json</td>
+<td>Returns a JSON array of transaction objects. <code>https://{NETWORK NAME}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.json</code></td>
+</tr>
+</tbody>
+</table>
+<details open>
+<summary>Schemes</summary>
+    <ul>
+        <li> JSON</li>
+    <ul>
+        <li> nested list 1</li>
+        <li> nested list 2</li>
+    </ul>
+        <li>XML</li>
+    </ul>
+    <ul>
+        <li>CSV</li>
+    </ul>
+        <ul>
+        <li>cURL</li>
+    </ul>
+</details>
+<h1 id="authentication"><a class="header" href="#authentication">Authentication</a></h1>
+<p>The API uses OAuth to validate access. The OAuth Token can be passed in
+two ways. The first way is to pass the OAuth Token in the header of the
+request. The second is to pass the OAuth Token like any other query
+parameter. Please note that the OAuth Token is a required parameter.
+OAuth Tokens may be generated from the Manage API Credentials page.</p>
+<h1 id="query-parameters"><a class="header" href="#query-parameters">Query Parameters</a></h1>
+<p>The API takes the following optional query parameters:</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>from=</td>
+<td>Starting date in user's time zone, in format YYYY-MM-DD. Example: 2011-06-01. Inclusive.</td>
+</tr>
+<tr class="even">
+<td>to=</td>
+<td>Ending date in user's time zone, in format YYYY-MM-DD. Example: 2011-06-07. Inclusive.</td>
+</tr>
+<tr class="odd">
+<td>limit=</td>
+<td>Max number of transactions to return at a time. Defaults to 1000. Limited to at most 4000.</td>
+</tr>
+<tr class="even">
+<td>transaction_id=</td>
+<td>A specific transaction. If transaction_id is specified and no transaction with that ID is found, nothing will be returned. Returns at most 1 transaction.</td>
+</tr>
+<tr class="odd">
+<td>call_record_id=</td>
+<td>All transactions belonging to a specific call. If call_record_id is specified and no call with that ID is found, nothing will be returned. Returns all transactions belonging to the call record. <strong>Note:</strong> If transaction_id <em>and</em> call_record_id are passed, the specified transaction must belong to the specified call. If it does, the transaction will be returned. If it does not, nothing will be returned.</td>
+</tr>
+<tr class="even">
+<td>start_after_transaction_id=</td>
+<td>Transaction_id to start retrieving after. This should be the last value retrieved previously. Default (or empty string) means start at the oldest.</td>
+</tr>
+<tr class="odd">
+<td>include_columns=</td>
+<td>comma-separated list of field names to be returned in the response for each transaction (if not specified, all available fields for the account will be returned, minus any columns in exclude_columns)</td>
+</tr>
+<tr class="even">
+<td>exclude_columns=</td>
+<td>comma-separated list of field names to be excluded in the response for each transaction</td>
+</tr>
+<tr class="odd">
+<td>column_separator=</td>
+<td>[.csv format only] Separator between columns. Default is , for comma-separated values. (Can be set to any other separator like | for pipe-separated values or %09 for tab-separated values.)</td>
+</tr>
+<tr class="even">
+<td>row_separator=</td>
+<td>[.csv format only] Separator between lines. Defaults to %0A for n (line feed). Use %0D%0A for rn (carriage return + line feed).</td>
+</tr>
+<tr class="odd">
+<td>include_header=</td>
+<td>[.csv format only] 1 to include a header row; 0 to omit the header row. Default is 1.</td>
+</tr>
+<tr class="even">
+<td>force_quotes=</td>
+<td>[.csv format only] 1 to quote all CSV fields; 0 to only quote fields that contain separators. Default is 0.</td>
+</tr>
+<tr class="odd">
+<td>transaction_type=</td>
+<td>Filters for the type of transaction. Valid inputs are Call, PostCallEvent, Sale, or Signal. Sale maps to the Reported Conversion type.</td>
+</tr>
+</tbody>
+</table>
+<p>In order to ensure that all transactions are returned when using the
+<code>from=</code> and <code>to=</code> date query parameters, you should store the last
+transaction id you have downloaded and pass it as the
+<code>start_after_transaction_id</code> to the next request. Typical usage on the
+polling interval is to repeatedly call the API until no rows are
+returned, meaning you have downloaded all transactions. Please note, the
+&quot;to&quot; and &quot;from&quot; date range parameters are both necessary, providing only
+one or the other will not filter the results.</p>
+<h2 id="constants"><a class="header" href="#constants">Constants</a></h2>
+<p>We provide three helpful constants that can be used in the
+<code>include_columns</code> and <code>exclude_columns</code> options:</p>
+<blockquote>
+<p><span class="title-ref"><code>$invoca_custom_columns</code></span> a dynamic
+constant that represents the current list of your Marketing Data
+Fields. </p>
+<blockquote>
+<p><b> Note: </b> If the list of custom columns changes, those changes
+will be included in future API calls that use
+<code>include_columns=$invoca_custom_columns</code>, independent of the API
+version. See Marketing Data Parameters section for more details.</p>
+</blockquote>
+<p><span class="title-ref"><code>$invoca_custom_source_columns</code></span> a
+dynamic constant that represents the sources for the current list of
+your Marketing Data Fields. </p>
+<blockquote>
+<p><b> Note: </b> If the list of custom columns
+changes, those changes will be included in future API calls that use
+<code>include_columns=$invoca_custom_source_columns</code>, independent of
+the API version. See Marketing Data Parameters section for more
+details.</p>
+</blockquote>
+<p><span class="title-ref"><code>$invoca_default_columns</code></span> represents
+the default set of columns provided by the Transactions API for your
+requested version</p>
+</blockquote>
+<h2 id="response-1"><a class="header" href="#response-1">Response</a></h2>
+<h3 id="general-parameters"><a class="header" href="#general-parameters">General Parameters</a></h3>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 10%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Name in Reports</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>advertiser_call_fee_localized</td>
+<td>Advertiser Fees</td>
+<td>Advertiser Telecommunications fee associated with transaction</td>
+</tr>
+<tr class="even">
+<td>advertiser_campaign_id</td>
+<td>Advertiser Campaign ID (Invoca ID)</td>
+<td>The Invoca identifier of the campaign.</td>
+</tr>
+<tr class="odd">
+<td>advertiser_campaign_id_from_network</td>
+<td>Advertiser Campaign ID</td>
+<td>The Campaign ID from the network as set on the advertiser campaign.</td>
+</tr>
+<tr class="even">
+<td>advertiser_campaign_name</td>
+<td>Advertiser Campaign</td>
+<td>Name of the campaign.</td>
+</tr>
+<tr class="odd">
+<td>advertiser_campaign_country</td>
+<td>Advertiser Campaign Country</td>
+<td>Country of the campaign.</td>
+</tr>
+<tr class="even">
+<td>advertiser_id</td>
+<td>Advertiser ID (Invoca ID)</td>
+<td>The Invoca identifier of the advertiser</td>
+</tr>
+<tr class="odd">
+<td>advertiser_id_from_network</td>
+<td>Advertiser ID</td>
+<td>Advertiser ID from the network as set on the Invoca advertiser.</td>
+</tr>
+<tr class="even">
+<td>advertiser_name</td>
+<td>Advertiser</td>
+<td>Name of the advertiser.</td>
+</tr>
+<tr class="odd">
+<td>advertiser_payin_localized</td>
+<td>Earned</td>
+<td>Amount paid in by advertiser</td>
+</tr>
+<tr class="even">
+<td>affiliate_call_volume_ranking</td>
+<td>Affiliate Volume Ranking</td>
+<td>Network ranking of affiliate's call volume (0 to 5, and -1 being 'new'). Blank if no affiliate.</td>
+</tr>
+<tr class="odd">
+<td>affiliate_commissions_ranking</td>
+<td>Affiliate Commissions Ranking</td>
+<td>Network ranking of affiliate's commissions (0 to 5, and -1 being 'new'). Blank if no affiliate.</td>
+</tr>
+<tr class="even">
+<td>affiliate_conversion_rate_ranking</td>
+<td>Affiliate Conversion Rate Ranking</td>
+<td>Network ranking of affiliate's conversion rate (0 to 5, and -1 being 'new'). Blank if no affiliate.</td>
+</tr>
+<tr class="odd">
+<td>affiliate_id</td>
+<td>Affiliate ID (Invoca ID)</td>
+<td>The Invoca identifier of the affiliate</td>
+</tr>
+<tr class="even">
+<td>affiliate_id_from_network</td>
+<td>Affiliate ID</td>
+<td>Affiliate ID from the network as set on the Invoca affiliate.</td>
+</tr>
+<tr class="odd">
+<td>affiliate_name</td>
+<td>Affiliate</td>
+<td>Name of the affiliate</td>
+</tr>
+<tr class="even">
+<td>affiliate_payout_localized</td>
+<td>Paid</td>
+<td>Amount paid out to the affiliate</td>
+</tr>
+<tr class="odd">
+<td>call_fee_localized</td>
+<td>Fees</td>
+<td>Telecommunications fee associated with transaction</td>
+</tr>
+<tr class="even">
+<td>call_result_description_detail</td>
+<td>Call Result</td>
+<td>Status of the transaction</td>
+</tr>
+<tr class="odd">
+<td>call_source_description</td>
+<td>Source</td>
+<td>Source of the transaction</td>
+</tr>
+<tr class="even">
+<td>calling_phone_number</td>
+<td>Caller ID</td>
+<td>Caller ID. Formatted as 12 characters, example: <code>866-555-1234</code></td>
+</tr>
+<tr class="odd">
+<td>city</td>
+<td>City</td>
+<td>City where transaction originated</td>
+</tr>
+<tr class="even">
+<td>complete_call_id</td>
+<td>Call Record ID</td>
+<td>Globally unique identifier for the call this transaction is part of. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the <code>-</code>.</td>
+</tr>
+<tr class="odd">
+<td>connect_duration</td>
+<td>Connected Duration</td>
+<td>Duration in seconds that the call that was connected to the call center.</td>
+</tr>
+<tr class="even">
+<td>corrected_at</td>
+<td>Corrected At</td>
+<td>[Correction only] Date and time the transaction was corrected, in user's time zone, followed by offset from GMT.</td>
+</tr>
+<tr class="odd">
+<td>corrects_transaction_id</td>
+<td>Corrects Call</td>
+<td>[Correction only] Id of the original transaction that this transaction updates. Values in this row are the corrected ones and should replace the original values. Same format as <code>transaction_id</code>. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the -.</td>
+</tr>
+<tr class="even">
+<td>custom_data</td>
+<td>Array of Signals & Marketing Data Values</td>
+<td>JSON and XML formats only. This field is not included in response by default, and must be specified in the <code>include_columns</code> parameter. See table below for more information about the structure of this array.</td>
+</tr>
+<tr class="odd">
+<td>destination_phone_number</td>
+<td>Destination Phone Number</td>
+<td>The phone number where the call was transferred to (useful if an IVR transfers to multiple destinations). Up-to 20 character string, can contain numeric characters (i.e. 0-9) and the following additional characters: '-', '#', '*', 'x', and ','. '</td>
+</tr>
+<tr class="even">
+<td>duration</td>
+<td>Total Duration</td>
+<td>Duration of the call in seconds. Includes any time spent in an IVR tree before transferring to the call center.</td>
+</tr>
+<tr class="odd">
+<td>ivr_duration</td>
+<td>IVR Duration</td>
+<td>Duration in seconds that the call spent in the IVR tree.</td>
+</tr>
+<tr class="even">
+<td>keypress_1</td>
+<td>Key 1</td>
+<td>Name of the first key that was pressed</td>
+</tr>
+<tr class="odd">
+<td>keypress_2</td>
+<td>Key 2</td>
+<td>Name of the second key that was pressed</td>
+</tr>
+<tr class="even">
+<td>keypress_3</td>
+<td>Key 3</td>
+<td>Name of the third key that was pressed</td>
+</tr>
+<tr class="odd">
+<td>keypress_4</td>
+<td>Key 4</td>
+<td>Name of the fourth key that was pressed</td>
+</tr>
+<tr class="even">
+<td>keypresses</td>
+<td>Keypresses</td>
+<td>List of unique keynames that were pressed during the call</td>
+</tr>
+<tr class="odd">
+<td>margin_localized</td>
+<td>Margin</td>
+<td>Difference between <code>advertiser_payin_localized</code> and <code>affiliate_payout_localized</code></td>
+</tr>
+<tr class="even">
+<td>matching_advertiser_payin_policies</td>
+<td>Matching Advertiser Payin Policies</td>
+<td>List of advertiser policies that matched (base, bonus1, bonus2, etc.) to determine the advertiser payin, separated by +. For example, base+bonus1+bonus3. Note that if there was any advertiser payin, this field guaranteed to start with base.</td>
+</tr>
+<tr class="odd">
+<td>matching_affiliate_payout_policies</td>
+<td>Matching Affiliate Payout Policies</td>
+<td>List of affiliate policies that matched (base, bonus1, bonus2, etc.) to determine the affiliate payout, separated by +. For example, base+bonus2. Note that if there was any affiliate payout, this field guaranteed to start with base.</td>
+</tr>
+<tr class="even">
+<td>media_type</td>
+<td>Media Type</td>
+<td>Media type of the transaction source</td>
+</tr>
+<tr class="odd">
+<td>mobile</td>
+<td>Phone Type</td>
+<td>Landline or Mobile or empty string if type is unknown</td>
+</tr>
+<tr class="even">
+<td>notes</td>
+<td>Notes</td>
+<td>Free-form notations on transaction</td>
+</tr>
+<tr class="odd">
+<td>opt_in_SMS</td>
+<td>Opt In Sms</td>
+<td>Whether the caller opted in to receive an SMS promotion.</td>
+</tr>
+<tr class="even">
+<td>original_order_id</td>
+<td>Order ID</td>
+<td>[Sales reporting only] Id of the original transaction that this row is in reference to. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the -.</td>
+</tr>
+<tr class="odd">
+<td>payin_conditions</td>
+<td>Payin Conditions</td>
+<td>Base condition with highlighting around the term(s) that disqualified advertiser payin. For example: duration &gt; 1 min and in_region</td>
+</tr>
+<tr class="even">
+<td>payout_conditions</td>
+<td>Payout Conditions</td>
+<td>Base condition with highlighting around the term(s) that disqualified affiliate payout. For example: duration &gt; 1 min and in_region</td>
+</tr>
+<tr class="odd">
+<td>qualified_regions</td>
+<td>Qualified Regions</td>
+<td>The list of regions that that the caller matched</td>
+</tr>
+<tr class="even">
+<td>recording</td>
+<td>Recording</td>
+<td>URL to the call recording, if available</td>
+</tr>
+<tr class="odd">
+<td>recording_download_url</td>
+<td>(Not Present)</td>
+<td>Signed URL to download the call recording. Only present if the feature is enabled for the network.</td>
+</tr>
+<tr class="even">
+<td>region</td>
+<td>Region</td>
+<td>Region (state, province or country) where transaction originated</td>
+</tr>
+<tr class="odd">
+<td>repeat_calling_phone_number</td>
+<td>Repeat Caller</td>
+<td>Whether the call was a repeat call. Repeat call detection is not applied to shared or unavailable caller ids.</td>
+</tr>
+<tr class="even">
+<td>start_time_local</td>
+<td>Call Start Time</td>
+<td>Start of the call in the API user's time zone, followed by offset from GMT.</td>
+</tr>
+<tr class="odd">
+<td>start_time_utc</td>
+<td>Call Start Time (UTC timestamp)</td>
+<td>Start of the call in milliseconds since Jan 1, 1970. Divide by 1000 to get Unix epoch time.</td>
+</tr>
+<tr class="even">
+<td>start_time_xml</td>
+<td>Call Start Time (XML formatted)</td>
+<td>Start of the call in the API user's time zone in Soap XML formatted time.</td>
+</tr>
+<tr class="odd">
+<td>start_time_network_timezone</td>
+<td>Call Start Time Network Timezone</td>
+<td>Start of the call in the networks's time zone, followed by offset from GMT.</td>
+</tr>
+<tr class="even">
+<td>start_time_network_timezone_xml</td>
+<td>Call Start Time Network Timezone (XML formatted)</td>
+<td>Start of the call in the network's time zone in Soap XML formatted time.</td>
+</tr>
+<tr class="odd">
+<td>transaction_id</td>
+<td>Transaction ID</td>
+<td>Globally unique identifier for this transaction. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the -. This is the Primary Key of the results.</td>
+</tr>
+<tr class="even">
+<td>transaction_type</td>
+<td>Type</td>
+<td>The type of transaction - Call, Post Call Event, Reported Conversion, or Signal.</td>
+</tr>
+<tr class="odd">
+<td>transfer_from_type</td>
+<td>Transfer Type</td>
+<td>Where the call came from</td>
+</tr>
+<tr class="even">
+<td>verified_zip</td>
+<td>Verified Zip Code</td>
+<td>Zip Code entered by callers when prompted during call treatment</td>
+</tr>
+<tr class="odd">
+<td>hangup_cause</td>
+<td>End of Call Reason</td>
+<td>Who ended the call along with how it was ended</td>
+</tr>
+<tr class="even">
+<td>virtual_line_id</td>
+<td>Promo Number ID</td>
+<td>The Promo Number ID from the network</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ringpool-parameters"><a class="header" href="#ringpool-parameters">RingPool Parameters</a></h1>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 10%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Name in Reports</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dynamic_number_pool_id</td>
+<td>Pool ID</td>
+<td>The ID of the pool.</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_pool_type</td>
+<td>Pool Type</td>
+<td>The type of pool: Search, SearchKeyword or Custom</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param1_name</td>
+<td>Pool Param 1 Name</td>
+<td>The name for parameter 1</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param1_value</td>
+<td>Pool Param 1 Value</td>
+<td>The value for parameter 1</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param2_name</td>
+<td>Pool Param 2 Name</td>
+<td>The name for parameter 2</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param2_value</td>
+<td>Pool Param 2 Value</td>
+<td>The value for parameter 2</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param3_name</td>
+<td>Pool Param 3 Name</td>
+<td>The name for parameter 3</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param3_value</td>
+<td>Pool Param 3 Value</td>
+<td>The value for parameter 3</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param4_name</td>
+<td>Pool Param 4 Name</td>
+<td>The name for parameter 4</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param4_value</td>
+<td>Pool Param 4 Value</td>
+<td>The value for parameter 4</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param5_name</td>
+<td>Pool Param 5 Name</td>
+<td>The name for parameter 5</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param5_value</td>
+<td>Pool Param 5 Value</td>
+<td>The value for parameter 5</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param6_name</td>
+<td>Pool Param 6 Name</td>
+<td>The name for parameter 6</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param6_value</td>
+<td>Pool Param 6 Value</td>
+<td>The value for parameter 6</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param7_name</td>
+<td>Pool Param 7 Name</td>
+<td>The name for parameter 7</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param7_value</td>
+<td>Pool Param 7 Value</td>
+<td>The value for parameter 7</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param8_name</td>
+<td>Pool Param 8 Name</td>
+<td>The name for parameter 8</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param8_value</td>
+<td>Pool Param 8 Value</td>
+<td>The value for parameter 8</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param9_name</td>
+<td>Pool Param 9 Name</td>
+<td>The name for parameter 9</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param9_value</td>
+<td>Pool Param 9 Value</td>
+<td>The value for parameter 9</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param10_name</td>
+<td>Pool Param 10 Name</td>
+<td>The name for parameter 10</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param10_value</td>
+<td>Pool Param 10 Value</td>
+<td>The value for parameter 10</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param11_name</td>
+<td>Pool Param 11 Name</td>
+<td>The name for parameter 11</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param11_value</td>
+<td>Pool Param 11 Value</td>
+<td>The value for parameter 11</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param12_name</td>
+<td>Pool Param 12 Name</td>
+<td>The name for parameter 12</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param12_value</td>
+<td>Pool Param 12 Value</td>
+<td>The value for parameter 12</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param13_name</td>
+<td>Pool Param 13 Name</td>
+<td>The name for parameter 13</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param13_value</td>
+<td>Pool Param 13 Value</td>
+<td>The value for parameter 13</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param14_name</td>
+<td>Pool Param 14 Name</td>
+<td>The name for parameter 14</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param14_value</td>
+<td>Pool Param 14 Value</td>
+<td>The value for parameter 14</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param15_name</td>
+<td>Pool Param 15 Name</td>
+<td>The name for parameter 15</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param15_value</td>
+<td>Pool Param 15 Value</td>
+<td>The value for parameter 15</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param16_name</td>
+<td>Pool Param 16 Name</td>
+<td>The name for parameter 16</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param16_value</td>
+<td>Pool Param 16 Value</td>
+<td>The value for parameter 16</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param17_name</td>
+<td>Pool Param 17 Name</td>
+<td>The name for parameter 17</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param17_value</td>
+<td>Pool Param 17 Value</td>
+<td>The value for parameter 17</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param18_name</td>
+<td>Pool Param 18 Name</td>
+<td>The name for parameter 18</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param18_value</td>
+<td>Pool Param 18 Value</td>
+<td>The value for parameter 18</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param19_name</td>
+<td>Pool Param 19 Name</td>
+<td>The name for parameter 19</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param19_value</td>
+<td>Pool Param 19 Value</td>
+<td>The value for parameter 19</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param20_name</td>
+<td>Pool Param 20 Name</td>
+<td>The name for parameter 20</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param20_value</td>
+<td>Pool Param 20 Value</td>
+<td>The value for parameter 20</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param21_name</td>
+<td>Pool Param 21 Name</td>
+<td>The name for parameter 21</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param21_value</td>
+<td>Pool Param 21 Value</td>
+<td>The value for parameter 21</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param22_name</td>
+<td>Pool Param 22 Name</td>
+<td>The name for parameter 22</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param22_value</td>
+<td>Pool Param 22 Value</td>
+<td>The value for parameter 22</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param23_name</td>
+<td>Pool Param 23 Name</td>
+<td>The name for parameter 23</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param23_value</td>
+<td>Pool Param 23 Value</td>
+<td>The value for parameter 23</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param24_name</td>
+<td>Pool Param 24 Name</td>
+<td>The name for parameter 24</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param24_value</td>
+<td>Pool Param 24 Value</td>
+<td>The value for parameter 24</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_param25_name</td>
+<td>Pool Param 25 Name</td>
+<td>The name for parameter 25</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_param25_value</td>
+<td>Pool Param 25 Value</td>
+<td>The value for parameter 25</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_search_engine</td>
+<td>Traffic Source</td>
+<td>Search engine used.</td>
+</tr>
+<tr class="even">
+<td>dynamic_number_pool_referrer_search_keywords</td>
+<td>Keywords</td>
+<td>Search keywords used</td>
+</tr>
+<tr class="odd">
+<td>dynamic_number_pool_referrer_search_type</td>
+<td>Search Type</td>
+<td>Paid or Organic.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="additional-feature-parameters"><a class="header" href="#additional-feature-parameters">Additional Feature Parameters</a></h3>
+<p>Example 1: Get the next 20 transactions that occurred after transaction
+id C624DA2C-CF3367C3:</p>
+<pre><code>curl -k 'https://{Network Name}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv?limit=20&amp;start_after_transaction_id=C624DA2C-CF3367C3&amp;oauth_token=YbcFH'
+</code></pre>
+<p>Example 2: Get 50 rows from a specific time period with only the
+transaction_id and all Marketing Data columns:</p>
+<pre><code>curl -k 'https://{Network Name}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv?limit=50&amp;include_columns=transaction_id,$invoca_custom_columns&amp;exclude_columns=$invoca_default_columns&amp;from=2015-03-26&amp;to=2015-03-27&amp;oauth_token=YbcFH'
+</code></pre>
+<p>Example 3: Get 50 rows that exclude a few columns such as Caller ID and
+Call Recordings:</p>
+<pre><code>curl -k 'https://{Network Name}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv?limit=50&amp;exclude_columns=calling_phone_number,recording&amp;start_after_transaction_id=C624DA2C-CF3367C3&amp;oauth_token=YbcFH'
+</code></pre>
+<p>Example 4: Get All Transactions from a specific time period that are of
+transaction_type Signal:</p>
+<pre><code>curl -k 'https://{Network Name}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv?transaction_type=Signal&amp;from=2015-03-24&amp;to=2015-03-27&amp;oauth_token=YbcFH'
+</code></pre>
+<p>Example 5: Get All Transactions from a specific time period that are of
+transaction_type Post Call Event:</p>
+<pre><code>curl -k 'https://{Network Name}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv?transaction_type=PostCallEvent&amp;from=2015-03-24&amp;to=2015-03-27&amp;oauth_token=YbcFH'
+</code></pre>
+<p>Example 6: Get All Transactions from a specific time period that are of
+transaction_type Call and Signal:</p>
+<pre><code>curl -k 'https://{Network Name}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv?transaction_type[]=Call&amp;transaction_type[]=Signal&amp;from=2015-03-24&amp;to=2015-03-27&amp;oauth_token=YbcFH'
+</code></pre>
+<p>Example 7: Get All Transactions from a specific time period with oauth
+token in the request header:</p>
+<pre><code>curl -k -H 'Authorization: YbcFH' 'https://{Network Name}.invoca.net/api/2020-10-01/networks/transactions/{NETWORK ID}.csv?transaction_type[]=Call&amp;transaction_type[]=Signal&amp;transaction_type[]=PostCallEvent&amp;from=2015-03-24&amp;to=2015-03-27'
+</code></pre>
+<p>Endpoint:</p>
+<p><code>https://invoca.net/api/2020-10-01/networks/transactions/&lt;network_id&gt;.&lt;format&gt;</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="advertiser-user"><a class="header" href="#advertiser-user">Advertiser User</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="publisher--affiliate"><a class="header" href="#publisher--affiliate">Publisher / Affiliate</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="network-integration"><a class="header" href="#network-integration">Network Integration</a></h1>
 <p>Invoca customers and partners can integrate with the Invoca Marketing
 Automation platform through use of the Invoca Network Integration API.
@@ -1286,7 +2088,7 @@ platform.</p>
 <p><a href="api_documentation/./bulk_ringpool_api.html">Bulk Ringpool API</a> -allocates a dynamic, trackable promo phone number
 from a RingPool (designed to handle a high volume of requests per
 second).</p>
-<p><a href="api_documentation/./signal_api/index.html">Signal API</a> -used to report signals that occur on a specific call. Rainbows!
+<p><a href="api_documentation/./signal_api/index.html">Signal API</a> -used to report signals that occur on a specific call.
 (transaction).</p>
 <p><code>call_api/index</code> -used to pull transcript information for a specific
 call (transcript).</p>
@@ -1331,7 +2133,7 @@ conversion pixel and email approach to reporting conversions, see these
 pages:</p>
 <p><code>conversion_reporting_email</code></p>
 <p><code>conversion_reporting_pixel</code></p>
-<h1 id="authentication"><a class="header" href="#authentication">Authentication</a></h1>
+<h1 id="authentication-1"><a class="header" href="#authentication-1">Authentication</a></h1>
 <p>The Conversion Reporting API requires specific credentials and a
 conversion reporting ID for the URL. Note: creating new credentials is
 no longer supported. Please use the <code>signal_api/index</code> instead.</p>
