@@ -143,19 +143,25 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="transactions-api"><a class="header" href="#transactions-api">Transactions API</a></h1>
-<p>The Transactions API is accessible using the API credentials generated
-on the platform.</p>
+<p>The Transactions API returns call attributes, marketing data, and signal conversions. Additionally, correction transactions are returned that serve as corrections to previous call transactions. The API follows REST conventions. Perform an HTTPS GET to the URL with the format in which you’d like to receive data. The following response formats are supported.</p>
+<ul>
+<li>CSV</li>
+<li>XML</li>
+<li>JSON</li>
+</ul>
+<p>The API is accessible using the API credentials generated
+on the platform. </p>
 <p><a href="https://community.invoca.com/t5/developer-features/how-to-access-invoca-call-data-programmatically-via-api/ta-p/602">View the support documentation for this API.</a></p>
 <p>The data returned depends on your account type. To see which fields you
 will see, select an account type below.</p>
-<p><a href="./network_user.html">Network / Brand</a></p>
-<p><a href="./advertiser_user.html">Advertiser / Merchant</a></p>
-<p><a href="./affiliate_user.html">Publisher / Affiliate</a></p>
+<p><code>network_user</code> <a href="./transactions_api/network_user.html">Network / Brand</a></p>
+<p><code>advertiser_user</code> <a href="./transactions_api/advertiser_user.html">Advertiser / Merchant</a></p>
+<p><code>affiliate_user</code> <a href="./transactions_api/affiliate_user.html">Publisher / Affiliate</a></p>
 <p>Please note, the documentation shows a superset of fields available.
 Your response may differ depending on the features enabled on the
 platform being accessed. Make a sample request to the API to identify
 the fields returned.</p>
-<p>network_user advertiser_user affiliate_user</p>
+<h1 id="response"><a class="header" href="#response">Response</a></h1>
 
                     </main>
 
@@ -186,22 +192,6 @@ the fields returned.</p>
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

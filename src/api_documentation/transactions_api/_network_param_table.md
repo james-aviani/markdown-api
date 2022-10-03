@@ -110,7 +110,7 @@
 <tr class="even">
 <td>calling_phone_number</td>
 <td>Caller ID</td>
-<td>Caller ID. Formatted as 12 characters like 866-555-1234</td>
+<td>Caller ID. Formatted as 12 characters, example: <code>866-555-1234</code></td>
 </tr>
 <tr class="odd">
 <td>city</td>
@@ -120,7 +120,7 @@
 <tr class="even">
 <td>complete_call_id</td>
 <td>Call Record ID</td>
-<td>Globally unique identifier for the call this transaction is part of. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the -.</td>
+<td>Globally unique identifier for the call this transaction is part of. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the <code>-</code>.</td>
 </tr>
 <tr class="odd">
 <td>connect_duration</td>
@@ -135,12 +135,12 @@
 <tr class="odd">
 <td>corrects_transaction_id</td>
 <td>Corrects Call</td>
-<td>[Correction only] Id of the original transaction that this transaction updates. Values in this row are the corrected ones and should replace the original values. Same format as transaction_id. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the -.</td>
+<td>[Correction only] Id of the original transaction that this transaction updates. Values in this row are the corrected ones and should replace the original values. Same format as <code>transaction_id</code>. Up-to 32 character string, can contain alphanumeric characters (i.e. 0-9A-Z) and the -.</td>
 </tr>
 <tr class="even">
 <td>custom_data</td>
-<td>Array of Marketing Data Values</td>
-<td>JSON and XML formats only. This field is not included in response by default, and must be specified in the "include_columns" parameter. See table below for more information about the structure of this array.</td>
+<td>Array of Signals & Marketing Data Values</td>
+<td>JSON and XML formats only. This field is not included in response by default, and must be specified in the <code>include_columns</code> parameter. See table below for more information about the structure of this array.</td>
 </tr>
 <tr class="odd">
 <td>destination_phone_number</td>
@@ -185,7 +185,7 @@
 <tr class="odd">
 <td>margin_localized</td>
 <td>Margin</td>
-<td>Difference between advertiser_payin_localized and affiliate_payout_localized</td>
+<td>Difference between <code>advertiser_payin_localized</code> and <code>affiliate_payout_localized</code></td>
 </tr>
 <tr class="even">
 <td>matching_advertiser_payin_policies</td>

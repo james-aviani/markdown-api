@@ -23,8 +23,13 @@ events) from a server back into the platform.
 trackable promo phone number from a RingPool (designed to handle a
 high volume of requests per second).
 
+<<<<<<< HEAD
 [Signal API](./signal_api/index.md) -used to report signals that occur
 on a specific call. Rainbows!  (transaction).
+=======
+[Signal API](./signal_api/index.md) -used to report signals that occur on a specific call.
+(transaction).
+>>>>>>> 1166bffb1ede806c9e030fc6de9a92ef3ee68d52
 
 `call_api/index` -used to pull transcript information for a specific
 call (transcript).

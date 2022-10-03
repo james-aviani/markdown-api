@@ -165,8 +165,12 @@ events) from a server back into the platform.</p>
 <p><a href="./bulk_ringpool_api.html">Bulk Ringpool API</a> -allocates a dynamic,
 trackable promo phone number from a RingPool (designed to handle a
 high volume of requests per second).</p>
-<p><a href="./signal_api/index.html">Signal API</a> -used to report signals that occur
-on a specific call. Rainbows!  (transaction).</p>
+<h1>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<a href="./signal_api/index.html">Signal API</a> -used to report signals that occur
+on a specific call. Rainbows!  (transaction).</h1>
+<p><a href="./signal_api/index.html">Signal API</a> -used to report signals that occur on a specific call.
+(transaction).
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1166bffb1ede806c9e030fc6de9a92ef3ee68d52</p>
 <p><code>call_api/index</code> -used to pull transcript information for a specific
 call (transcript).</p>
 <p><code>call_ingestion_api/index</code> -used to ingest calls from external sources
@@ -221,22 +225,6 @@ calls_in_progress_api/index conversion_reporting</p>
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
