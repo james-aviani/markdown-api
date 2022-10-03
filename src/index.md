@@ -1,5 +1,7 @@
 # Welcome to the Invoca Developer Portal
 
+### Leverage the power of Invoca in your app or website. Browse the portal sections for all your documentation needs.
+
 
 ## This is A Passion Day Project
 

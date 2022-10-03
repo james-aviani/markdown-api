@@ -11,18 +11,20 @@ The platform provides a number of APIs:
 
 * [Affiliate User](./transactions_api/affiliate_user.md)
 
-[Network Integration](./network_integration/index.md) - supports the replication and synchronization of advertiser, publisher and campaign data between partner platforms.
+[Network Integration API](./network_integration/index.md) - supports
+the replication and synchronization of advertiser, publisher and
+campaign data between partner platforms.
 
-[Converstion Reporting](./conversion_reporting/index.md) -provides the ability to report completed order
-information (or other conversion events) from a server back into the
-platform.
+[Converstion Reporting](./conversion_reporting/index.md) -provides the
+ability to report completed order information (or other conversion
+events) from a server back into the platform.
 
-[Bulk Ringpool API](./bulk_ringpool_api.md) -allocates a dynamic, trackable promo phone number
-from a RingPool (designed to handle a high volume of requests per
-second).
+[Bulk Ringpool API](./bulk_ringpool_api.md) -allocates a dynamic,
+trackable promo phone number from a RingPool (designed to handle a
+high volume of requests per second).
 
-[Signal API](./signal_api/index.md) -used to report signals that occur on a specific call. Rainbows!
-(transaction).
+[Signal API](./signal_api/index.md) -used to report signals that occur
+on a specific call. Rainbows!  (transaction).
 
 `call_api/index` -used to pull transcript information for a specific
 call (transcript).
