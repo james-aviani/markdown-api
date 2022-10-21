@@ -46,4 +46,10 @@
 
 {{#include _advertiser_param_table.md}}
 
+{{#include _conversion_reporting_param_table.md}}
+
+{{#include _demographics_param_table.md}}
+
+{{#incldue _adwords_param_table.md}}
+
 {{#include _dnpr_param_table.md}}
