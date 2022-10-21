@@ -1,5 +1,7 @@
 {{#include _intro.md}}
 
+{{#include _rollup_message.md}}
+
 <style>.hide{ display: none;}</style>
 <label>
   Format:

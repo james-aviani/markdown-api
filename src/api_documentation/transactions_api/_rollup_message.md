@@ -1,7 +1,9 @@
+<style>.alert{ background-color: #FFD580;}</style>
+
+<div class="alert alert-warning">
 <h2>
   Signal Transactions Rollup
 </h2>
-<div class="alert alert-warning">
   <p>
     If you're upgrading from API versions older than <b>2020-10-01</b> we suggest testing to familiarize yourself with the updated Signal data structure.
   </p>

@@ -108,6 +108,8 @@ GET <code>https://{AFFILIATE NAME}.invoca.net/api/2020-10-01/affiliates/transact
             "destination_phone_number": "800-738-1560"
         }
 
+{{#include _errors.md}}
+
 {{#include network_query_params_non_csv.md}}
 
 ## Constants

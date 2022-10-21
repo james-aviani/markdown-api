@@ -1,5 +1,7 @@
 {{#include _intro.md}}
 
+{{#include _rollup_message.md}}
+
 <style>.hide{ display: none;}</style>
 <label>
   Format:
@@ -42,6 +44,6 @@
 
 ## General Parameters
 
-{{#include _network_param_table.md}}
+{{#include _advertiser_param_table.md}}
 
 {{#include _dnpr_param_table.md}}
