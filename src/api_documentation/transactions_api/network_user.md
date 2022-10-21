@@ -4,9 +4,8 @@ Network / Brand
 
 <style>.hide{ display: none;}</style>
 <label>
-  Scheme:
+  Format:
   <select class="scheme" name="scheme">
-    <option value="">Select One …</option>
     <option value="json">JSON</option>
     <option value="xml">XML</option>
     <option value="csv">CSV</option>
@@ -14,7 +13,7 @@ Network / Brand
   </select>
 </label>
 
-<div class="result-json hide">
+<div class="result-json">
 
     {{#include json.md}}
 

@@ -1,5 +1,7 @@
 ### Additional Feature Parameters
 
+{{#include curl_example.md}}
+
 Example 1: Get the next 20 transactions that occurred after transaction
 id C624DA2C-CF3367C3:
 

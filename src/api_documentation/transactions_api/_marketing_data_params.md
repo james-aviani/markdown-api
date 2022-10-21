@@ -1,5 +1,5 @@
-Marketing Data & Signal Parameters
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+## Marketing Data & Signal Parameters
+
 
 Please click [this
 link](https://www2.invoca.net/customer_data_dictionary/home) to access
@@ -14,15 +14,12 @@ name, XML format will not be supported.
 **Marketing Data & Signal can be accessed in two ways by Transactions
 API**
 
-1.  (JSON & XML formats only) By including <span
-    class="title-ref">custom\_data</span> as field in the <span
-    class="title-ref">include\_columns</span> parameter (e.g. <span
-    class="title-ref">include\_columns=transaction\_id,start\_time\_local,custom\_data</span>)
+1.  (JSON & XML formats only) By including <code>custom_data</code> as field in the <code>include_columns</code> parameter (e.g. <code>include_columns=transaction_id,start_time_local,custom_data</code>)
     a nested structure is returned containing all of the Marketing Data
     and Signals that were specified for the given transaction. Note:
     null values are not returned.
 
-Array of Marketing Data Objects
+## Array of Marketing Data Objects
 
 <table>
 <colgroup>
