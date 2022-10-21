@@ -5,6 +5,7 @@ selectElement.addEventListener('change', (event) => {
   const resultXML = document.querySelector('.result-xml');
   const resultCSV = document.querySelector('.result-csv');
   const resultCURL = document.querySelector('.result-curl');
+
   switch (event.target.value) {
     case "json":
       resultJSON.classList.remove('hide');
@@ -30,12 +31,6 @@ selectElement.addEventListener('change', (event) => {
       resultXML.classList.add('hide');
       resultCSV.classList.add('hide');
       break; 
-    case "select":
-      resultJSON.classList.remove('hide');
-      resultXML.classList.add('hide');
-      resultCSV.classList.add('hide');
-      resultCURL.classList.add('hide');
-      break;
     default:
       break;
   }

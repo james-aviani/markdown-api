@@ -1,3 +1,4 @@
+
 ## Summary
 Returns an XML document with an array of Transaction elements.
 

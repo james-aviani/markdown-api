@@ -25,7 +25,7 @@
 
 <div class="result-csv hide">
 
-{{#include advertiser_csv.md}}
+    {{#include advertiser_csv.md}}
 
 </div>
 

@@ -1,3 +1,4 @@
+
 ## Summary
 
 Comma-Separated Values, or really Anything-Separated Values (see column_separator= below). Returns an optional header row followed by one row for each transaction, with delimited values for each row. 

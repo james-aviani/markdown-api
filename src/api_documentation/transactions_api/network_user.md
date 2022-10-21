@@ -1,5 +1,3 @@
-Network / Brand
-===============
 {{#include _intro.md}}
 
 <style>.hide{ display: none;}</style>
@@ -27,7 +25,7 @@ Network / Brand
 
 <div class="result-csv hide">
 
-{{#include network_csv.md}}
+    {{#include network_csv.md}}
 
 </div>
 
