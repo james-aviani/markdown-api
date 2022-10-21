@@ -15,25 +15,25 @@ Network / Brand
 
 <div class="result-json">
 
-    {{#include json.md}}
+    {{#include network_json.md}}
 
 </div>
 
 <div class="result-xml hide">
 
-    {{#include xml.md}}
+    {{#include network_xml.md}}
 
 </div>
 
 <div class="result-csv hide">
 
-{{#include csv.md}}
+{{#include network_csv.md}}
 
 </div>
 
 <div class="result-curl hide">
 
-    {{#include curl.md}}
+    {{#include network_curl.md}}
 
 </div>
 <script src="schemesRender.js"></script>
