@@ -1,5 +1,9 @@
 The Basics 
 ======
 
-These sections cover basic design principles, error handling, our PPC platform and signal sign on.
+The following API articles provide an understanding for high level API methodology across the different Invoca APIs.
+
+[Design Principles](./design_principles.md)
+[Error Handling](./error_handling.md)
+
 
